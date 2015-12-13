@@ -750,7 +750,9 @@ function syncTransactional(){
 
 	if (!CheckSyncInterval('TRANSACTIONAL')){return; }
 	opMessage("Synchronizing Transactional Data");
-
+	 var path = window.location.pathname;
+     var page = path.split("/").pop();
+     
 	html5sql.process(
 		["SELECT * from MyUserDets"],
 		function(transaction, results, rowsArray){
@@ -768,6 +770,11 @@ function syncTransactional(){
 									requestSAPData("MyJobsOrdersObjects.htm",'');
 									requestSAPData("MyJobsNotifications.htm",'');
 									//requestSAPData("MyJobsMessages.htm",'');
+									alert("22")
+									if(page=="Jobs.html"){
+										refreshJobList()
+									}
+									
 						 }
 						 
 					},
@@ -2011,7 +2018,7 @@ function dropTables() {
 						'DROP TABLE IF EXISTS MyOperationsSplit;'+
 						'DROP TABLE IF EXISTS MyPartners;'+
 						'DROP TABLE IF EXISTS MyAssets;'+
-						'DROP TABLE IF EXISTS MyAssetsDetails;'+
+						'DROP TABLE IF EXISTS AssetDetails;'+
 						'DROP TABLE IF EXISTS MyMaterials;'+
 						'DROP TABLE IF EXISTS MyUserStatus;'+
 						'DROP TABLE IF EXISTS MyOperationInfo;'+
@@ -2093,7 +2100,7 @@ function emptyTables(type) {
 						'DELETE FROM  MyPartners;'+
 						'DELETE FROM  MyMaterials;'+
 						'DELETE FROM  MyAssets;'+
-						'DELETE FROM  MyAssetsDetails;'+
+						'DELETE FROM  AssetDetails;'+
 						'DELETE FROM  MyUserStatus;'+
 						'DELETE FROM  MyOperationInfo;'+
 						'DELETE FROM  MyNotifications;'+
@@ -2184,7 +2191,9 @@ function emptyTables(type) {
 				);
 }
 function loadDemoData() { 
-	
+	 var path = window.location.pathname;
+     var page = path.split("/").pop();
+     
 	localStorage.setItem("LastSyncedDT",getDate()+getTime())
 	sqlstatement=	'DELETE FROM  MyOrders;'+
 					'DELETE FROM  MyAjax;'+
@@ -2328,7 +2337,7 @@ function resetTables() {
 					'DELETE FROM  MyPartners;'+
 					'DELETE FROM  MyMaterials;'+
 					'DELETE FROM  MyAssets;'+
-					'DELETE FROM  MyAssetsDetails;'+
+					'DELETE FROM  AssetDetails;'+
 					'DELETE FROM  MyUserStatus;'+
 					'DELETE FROM  MyOperationInfo;'+
 					'DELETE FROM  MyNotifications;'+
@@ -2389,6 +2398,7 @@ function resetTables() {
 
 					html5sql.process(sqlstatement,
 					 function(){
+						
 						var x = window.location.href.split("/")
 						if(x[x.length-1]=="Home.html"){
 							
@@ -2403,6 +2413,7 @@ function resetTables() {
 
 					 },
 					 function(error, statement){
+					
 						 opMessage("Error: " + error.message + " when delete processing " + statement);
 					 }        
 			);

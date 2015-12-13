@@ -34,6 +34,14 @@ function diffInMinutes(StartDate, StartTime, EndDate, EndTime){
 }
 function diffInTime(StartDate, StartTime, EndDate, EndTime){
 	
+	if(("x"+StartDate).length<8){
+		StartDate=EndDate
+		StartTime = EndTime
+	}
+	//alert(StartTime)
+
+	StartTime=StartTime.substring(0, 6)+"00";
+	//alert(StartTime)
 	var diff = Math.abs(new Date(StartDate+" "+StartTime) - new Date(EndDate+" "+EndTime));
 	var minutes = Math.floor((diff/1000)/60);
 	

@@ -2047,7 +2047,7 @@ function prepareChangeStatus(){
 		sap.ui.getCore().getElementById('btnStatusOnSite').setEnabled(true);
 
 
-	}else if((currentStatus=="REJ1")||(currentStatus=="REJ2")||(currentStatus=="CLOSED")){
+	}else if((currentStatus=="REJ1")||(currentStatus=="REJ2")||(currentStatus=="CLOSED")||(currentStatus=="NOJOBS")){
 		
 		sap.ui.getCore().getElementById('btnStatusAccept').setVisible(false);
 		sap.ui.getCore().getElementById('btnStatusReject').setVisible(false);
@@ -2667,7 +2667,12 @@ function  buildHistoryForm(did){
 	}
 
 function  buildDetailsContent(aid){
-
+if(aid.length<2){
+	currentStatus="NOJOBS"
+		prepareChangeStatus()
+	return;
+}
+	
 currentOrderListItem=aid;
 var res = aid.split(":")
 var orderno=res[1];
@@ -4408,7 +4413,18 @@ function rebuildTimeConfs()
 					  						
 					  							}]
 										 })
-								]
+								],
+						contentRight : [
+										new sap.m.Button("Syncit", {
+											type: 	sap.m.ButtonType.Accept,
+						   					 text: "Sync",
+						   					icon:"sap-icon://synchronize",
+						  					 press: [ function(){						  						
+						  						SetConfigParam('LASTSYNC_TRANSACTIONAL', "20120101010101");
+						  						syncTransactional()
+						  							}]
+											 })
+									]
 						})			 
 
 			});
@@ -4841,7 +4857,7 @@ function BuildChangeStatusUpdate(){
 														
 														
 														workTime = diffInTime(rowsArray[0].tconf_date,rowsArray[0].tconf_time,getFormattedDate(),getFormattedTime())
-														alert(workTime)
+														
 														sap.ui.getCore().getElementById("StatusUpdateActualWork").setValue(workTime)
 													
 														
@@ -5206,7 +5222,7 @@ function startBGSync()
 					})]
                   })) */
              
-       
+                 
 		 //syncReference()
 		 syncTransactional()
 		 localStorage.setItem('SAPCalling','false')
@@ -5214,7 +5230,7 @@ function startBGSync()
 		 syncDT=localStorage.getItem('LastSyncedDT')		 
 		// standardList.removeItem("Job:000050646820:0010").destroy()
 		 
-		// refreshJobList()
+		
 		 };
    } else {
       // Web workers are not supported by your browser
@@ -5229,10 +5245,9 @@ function refreshJobList(){
 				
 					for (var n = 0; n < rowsArray.length; n++) {
 						item = rowsArray[n];
-						x=sap.ui.getCore().byId("Job:"+item.orderno+":"+item.opno)
-						if (item.orderno=="000050646820"){
-							x=sap.ui.getCore().byId("Job:"+item.orderno+":"+item.opno)
-							alert(x)
+						x=+"x"+sap.ui.getCore().byId("Job:"+item.orderno+":"+item.opno)
+						if (x.length<30){
+							
 							addNewJobToList(item.orderno,item.opno)
 						}
 							
@@ -5242,7 +5257,7 @@ function refreshJobList(){
 					
 			 },
 			 function(error, statement){
-				 alert("2")
+				
 			 }        
 			);	
 }
