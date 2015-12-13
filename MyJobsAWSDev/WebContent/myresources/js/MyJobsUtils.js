@@ -43,11 +43,13 @@ function diffInTime(StartDate, StartTime, EndDate, EndTime){
 	StartTime=StartTime.substring(0, 6)+"00";
 	//alert(StartTime)
 	var diff = Math.abs(new Date(StartDate+" "+StartTime) - new Date(EndDate+" "+EndTime));
+	
 	var minutes = Math.floor((diff/1000)/60);
 	
 	var m = minutes % 60;
 	var h = (minutes-m)/60
-	
+	alert(diff+":"+minutes+":"+h+":"+m)
+	alert("xx"+(0+diff)+":"+(0+minutes)+":"+(0+h)+":"+(0+m))
 	return zeroFill1(h.toString())+":"+zeroFill1(m.toString())
 }
 function convertToMinutes(time){
