@@ -51,7 +51,7 @@ function diffInTime(StartDate, StartTime, EndDate, EndTime){
 	minutes = minutes /60
 	var m = minutes % 60;
 	var h = (minutes-m)/60
-	
+	alert(m+":"+h)
 	alert(h.toString()+":"+m.toString())
 	return h.toString()+":"+m.toString()
 }
