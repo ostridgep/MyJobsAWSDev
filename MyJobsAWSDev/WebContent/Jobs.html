@@ -4851,7 +4851,7 @@ function BuildChangeStatusUpdate(){
 								
 									html5sql.process("select * from myjobdets where orderno =  '"+CurrentOrderNo+"' and opno =  '"+CurrentOpNo+"'",
 											 function(transaction, results, rowsArray){
-												
+												alert("select * from myjobdets where orderno =  '"+CurrentOrderNo+"' and opno =  '"+CurrentOpNo+"' length="+rowsArray.length)
 												
 													if( rowsArray.length>0) {
 														
