@@ -41,10 +41,10 @@ function diffInTime(StartDate, StartTime, EndDate, EndTime){
 
 
 	StartTime=StartTime.substring(0, 6)+"00";
-	
+	var diff=0;
 	var diff1 = Math.abs(new Date(StartDate+" "+StartTime) - new Date(EndDate+" "+EndTime));
-	var diff =    Math.abs(new Date(EndDate+" "+EndTime) -new Date(StartDate+" "+StartTime))
-	
+	diff =    Math.abs(new Date(EndDate+" "+EndTime) -new Date(StartDate+" "+StartTime))
+	alert(diff)
 	var minutes =diff/1000;
 	minutes = (diff/1000) 
 	minutes -= (minutes%60) 
