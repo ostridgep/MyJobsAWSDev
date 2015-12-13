@@ -41,8 +41,8 @@ function diffInTime(StartDate, StartTime, EndDate, EndTime){
 
 
 	StartTime=StartTime.substring(0, 6)+"00";
-	var sd=new Date(EndDate+" "+EndTime)
-	var ed=new Date(StartDate+" "+StartTime)
+	var sd=new Date(EndDate.substring(0,4),EndDate.substring(5,7),EndDate.substring(8,10),EndTime.substring(0,2),EndTime.substring(3,5),EndTime.substring(6,8))
+	var ed=new Date(StartDate.substring(0,4),StartDate.substring(5,7),StartDate.substring(8,10),StartTime.substring(0,2),StartTime.substring(3,5),StartTime.substring(6,8))
 	var diff=0;
 	
 	diff =    Math.abs( sd-ed)
