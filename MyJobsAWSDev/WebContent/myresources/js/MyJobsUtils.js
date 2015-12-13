@@ -46,7 +46,7 @@ function diffInTime(StartDate, StartTime, EndDate, EndTime){
 	var diff=0;
 	
 	diff =    Math.abs( sd-ed)
-	alert(diff)
+	
 	var minutes =diff/1000;
 	minutes = (diff/1000) 
 	minutes -= (minutes%60) 
@@ -54,8 +54,7 @@ function diffInTime(StartDate, StartTime, EndDate, EndTime){
 	
 	var m = minutes % 60;
 	var h = (minutes-m)/60
-	alert(m+":"+h)
-	alert(h.toString()+":"+m.toString())
+	
 	return h.toString()+":"+m.toString()
 }
 function convertToMinutes(time){
