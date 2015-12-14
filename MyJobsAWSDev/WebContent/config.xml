@@ -6,9 +6,9 @@
         id        = "com.pjo.sapui5myjobs"
         version   = "1.151122.2100">
 
-    <name>MyJobs AWS</name>
+    <name>MyJobs AWS - DEV)</name>
     <description>
-        MyJobs AWS
+        MyJobs AWS (DEV)
     </description>
 
     <author href="#" email="Paul@ostridge.com">
