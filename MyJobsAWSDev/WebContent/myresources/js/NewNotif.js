@@ -401,91 +401,17 @@ function BuildPriorities(selectedId){
 		                    ],
 		             beforeOpen:function(){
 		            	 
-		            	 $.ajax({
+/*		            	 $.ajax({
 		         		    type: "GET",
 		         		    url: "TestData/Sites.xml",
 		         		    dataType: "xml",
 		         		    success: function (xml) {    
 		         		       xmlDoc=xml 
 		         		      BuildAssetSites();
-/*		         		      $.ajax({
-				         		    type: "GET",
-				         		    url: "TestData/T2_MPLT_LSVM.XML",
-				         		    dataType: "xml",
-				         		    success: function (xml) {    
-				         		       xmlDoc=xml 
-				         		      BuildAssetSites("LSVM");
-				         		       console.log("done")
-				         		      $.ajax({
-						         		    type: "GET",
-						         		    url: "TestData/T2_MPLT_LSVS.XML",
-						         		    dataType: "xml",
-						         		    success: function (xml) {    
-						         		       xmlDoc=xml 
-						         		      BuildAssetSites("LSVS");
-						         		      $.ajax({
-								         		    type: "GET",
-								         		    url: "TestData/T2_MPLT_NSVE.XML",
-								         		    dataType: "xml",
-								         		    success: function (xml) {    
-								         		       xmlDoc=xml 
-								         		      BuildAssetSites("NSVE");
-								         		      $.ajax({
-										         		    type: "GET",
-										         		    url: "TestData/T2_MPLT_NSVM.XML",
-										         		    dataType: "xml",
-										         		    success: function (xml) {    
-										         		       xmlDoc=xml 
-										         		      BuildAssetSites("NSVM");
-										         		      $.ajax({
-												         		    type: "GET",
-												         		    url: "TestData/T2_MPLT_NSVW.XML",
-												         		    dataType: "xml",
-												         		    success: function (xml) {    
-												         		       xmlDoc=xml 
-												         		      BuildAssetSites("NSVW");
-												         		      $.ajax({
-														         		    type: "GET",
-														         		    url: "TestData/T2_MPLT_RSVM.XML",
-														         		    dataType: "xml",
-														         		    success: function (xml) {    
-														         		       xmlDoc=xml 
-														         		      BuildAssetSites("RSVM");
-														         		      $.ajax({
-																         		    type: "GET",
-																         		    url: "TestData/T2_MPLT_RSVN.XML",
-																         		    dataType: "xml",
-																         		    success: function (xml) {    
-																         		       xmlDoc=xml 
-																         		      BuildAssetSites("RSVN");
-																         		      LoadSites();
-																         		    }    
-																         		       
-																         		});
-														         		      
-														         		    }    
-														         		       
-														         		});
-												         		      
-												         		    }    
-												         		       
-												         		});
-										         		      
-										         		    }    
-										         		       
-										         		});
-								         		    }    
-								         		       
-								         		});
-						         		    }    
-						         		       
-						         		});
-				         		    }    
-				         		       
-				         		});*/
+
 		         		    }    
 		         		       
-		         		});
+		         		});*/
 		                    
 		             },
 		        contentWidth:"85%",
@@ -581,7 +507,7 @@ function BuildPriorities(selectedId){
    	 }else{
    		AssetPath=cordova.file.dataDirectory
    	 }
- 
+ alert(AssetPath+"T2_MPLT_"+x[1]+".XML")
 			 $.ajax({
       		    type: "GET",
       		    url: AssetPath+"T2_MPLT_"+x[1]+".XML",

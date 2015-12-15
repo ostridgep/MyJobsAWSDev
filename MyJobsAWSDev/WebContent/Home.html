@@ -1450,6 +1450,17 @@ $(function() {
 	
 	startBGSync()
 	showSystemMessage()
+	 $.ajax({
+		    type: "GET",
+		    url: "TestData/Sites.xml",
+		    dataType: "xml",
+		    success: function (xml) {    
+		       xmlDoc=xml 
+		       BuildAssetSites();
+
+		    }    
+		       
+		});
 	
 })
 jQuery.sap.require("sap.m.MessageBox");

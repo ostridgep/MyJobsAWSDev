@@ -4528,7 +4528,17 @@ $(function() {
 	
 	BuildNotificationTypes()
 	BuildTCEmployees()
-	
+	 $.ajax({
+		    type: "GET",
+		    url: "TestData/Sites.xml",
+		    dataType: "xml",
+		    success: function (xml) {    
+		       xmlDoc=xml 
+		       BuildAssetSites();
+
+		    }    
+		       
+		});
 	});
 function selectListDefault(){
 
