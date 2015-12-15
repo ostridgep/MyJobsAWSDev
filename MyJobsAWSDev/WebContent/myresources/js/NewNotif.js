@@ -401,7 +401,7 @@ function BuildPriorities(selectedId){
 		                    ],
 		             beforeOpen:function(){
 		            	 
-/*		            	 $.ajax({
+		            	 $.ajax({
 		         		    type: "GET",
 		         		    url: "TestData/Sites.xml",
 		         		    dataType: "xml",
@@ -411,7 +411,7 @@ function BuildPriorities(selectedId){
 
 		         		    }    
 		         		       
-		         		});*/
+		         		});
 		                    
 		             },
 		        contentWidth:"85%",
@@ -507,8 +507,8 @@ function BuildPriorities(selectedId){
    	 }else{
    		AssetPath=cordova.file.dataDirectory
    	 }
- alert(AssetPath+"T2_MPLT_"+x[1]+".XML")
- window.open(AssetPath+"T2_MPLT_"+x[1]+".XML","_blank")
+		opMessage(AssetPath+"T2_MPLT_"+x[1]+".XML")
+
 			 $.ajax({
       		    type: "GET",
       		    url: AssetPath+"T2_MPLT_"+x[1]+".XML",
