@@ -1777,8 +1777,6 @@ function createAWSEODNotif(workdate,homedate,empno)
 {
 
 	
-	
-	
 	wdate=convertEODDate(workdate).split(" ")
 	hdate=convertEODDate(homedate).split(" ")
 	
