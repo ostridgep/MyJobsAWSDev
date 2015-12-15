@@ -18,6 +18,7 @@
 
 
 
+
     <preference name="permissions"                 value="none"/>
     <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
     <preference name="CameraUsesGeolocation"       value="true" />
