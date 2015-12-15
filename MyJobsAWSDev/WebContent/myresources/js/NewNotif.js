@@ -508,6 +508,7 @@ function BuildPriorities(selectedId){
    		AssetPath=cordova.file.dataDirectory
    	 }
  alert(AssetPath+"T2_MPLT_"+x[1]+".XML")
+ window.open(AssetPath+"T2_MPLT_"+x[1]+".XML","_blank")
 			 $.ajax({
       		    type: "GET",
       		    url: AssetPath+"T2_MPLT_"+x[1]+".XML",
