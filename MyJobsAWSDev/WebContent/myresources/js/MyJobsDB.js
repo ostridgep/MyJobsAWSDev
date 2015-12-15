@@ -1385,12 +1385,13 @@ function syncReference(){
 							syncReferenceDetsUpdated=false;
 							SAPServerPrefix=$.trim(rowsArray[0].paramvalue);							
 							opMessage("Sending SAP Request for Ref Data");	
+							getAssetFiles()
 							requestSAPData("MyJobsRefData.htm",'');
 							requestSAPData("MyJobsRefDataCodes.htm",'');
 							requestSAPData("MyJobsUsers.htm",'');
 							requestSAPData("MyJobsVehiclesDefault.htm",'');
 							requestSAPData("MyJobsVehicles.htm",'');
-							getAssetFiles()
+							
 							///loadAssetXML("TestData\\T2_MPLT_ESVN.XML")
 							//loadAssetXML("TestData\\T2_MPLT_LSVM.XML")
 							//loadAssetXML("TestData\\T2_MPLT_LSVS.XML")
@@ -1439,7 +1440,7 @@ function getAssetFiles(){
 }
 function downloadfile(fname){ 
 	var myurl=SAPServerPrefix+fname+SAPServerSuffix;
-	console.log(myurl)
+	opMessage(myurl)
     window.requestFileSystem( 
                  LocalFileSystem.PERSISTENT, 0,  
                  function onFileSystemSuccess(fileSystem) { 
@@ -1453,14 +1454,14 @@ function downloadfile(fname){
 
                              fileTransfer.download( myurl, 
                                        function(theFile) { 
-                                       console.log("download complete: " + theFile.toURI()); 
+                            	 opMessage("download complete: " + theFile.toURI()); 
                                        alert(theFile.toURI()); 
                                        alert(sPath)
                                        }, 
                                        function(error) { 
-                                       console.log("download error source " + error.source); 
-                                       console.log("download error target " + error.target); 
-                                       console.log("upload error code: " + error.code); 
+                                    	   opMessage("download error source " + error.source); 
+                                    	   opMessage("download error target " + error.target); 
+                                    	   opMessage("upload error code: " + error.code); 
                                        } 
                                        ); 
                              },  
