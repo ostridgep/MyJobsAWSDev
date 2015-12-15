@@ -57,7 +57,7 @@ function BuildVehicleCheck(){
         content: []
  
   }));
-	alert("1")
+	
 	 html5sql.process("select * from myvehiclesdefault",
 		 function(transaction, results, rowsArray){
 		             
@@ -109,7 +109,7 @@ function BuildVehicleCheck(){
 			}
 			
 		}  
-			alert("fields")
+			
 		 sap.ui.getCore().getElementById('Reg').setValue(localStorage.getItem("VehicleReg"))
 	       html5sql.process("select * from myvehicles where reg = '"+localStorage.getItem("VehicleReg")+"'",      
 	                     function(transaction, results, rowsArray){
@@ -123,10 +123,10 @@ function BuildVehicleCheck(){
 	                                  VehicleEQNo=rowsArray[0].id;                                  
 	                                  VehicleMPoint=rowsArray[0].mpoint;                     
 	                           }
-	                           alert("reg set")
+	                           
 	                     },
 	                     function(error, statement){
-	                    	 alert("regnot set")
+	                    	 
 	                           //outputLogToDB(); 
 	                      }        
 	                     );

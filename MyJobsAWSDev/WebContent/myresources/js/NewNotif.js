@@ -293,7 +293,79 @@ function BuildPriorities(selectedId){
 				);
 
 			}
+		var aAlreadyAddedProducts7 = [];
+		var oSuggestTableInput7=new sap.m.Input("sugtableinput7", {
+			placeholder: "Site Name - Please Start Typing",
+			showValueHelp: true,
+			showTableSuggestionValueHelp: false,
+			showSuggestion: true,
+			valueHelpRequest: function (oEvent) {
+				//sap.m.MessageBox.alert("Value help requested");
+			},
+			suggestionItemSelected: function(oEvent){
+				var oItem = oEvent.getParameter("selectedRow");
+				//alert("sap.m.Input id " + this.getId() + " with suggestion: selected item text is " + oItem.getCells()[0].getText()+":"+oItem.getCells()[1].getText());
+				BuildAssetPlantGroups(oItem.getCells()[0].getText()+":"+oItem.getCells()[1].getText());
+			},
+			suggest: function(oEvent){
+				var sValue = oEvent.getParameter("suggestValue"),
+					oSuggestionRow;
 
+				
+				
+				setTimeout(function () {
+					// remove old columns
+					oSuggestTableInput7.removeAllSuggestionColumns();
+					oSuggestTableInput7.addSuggestionColumn(new sap.m.Column({
+						styleClass : "name",
+						hAlign : "Begin",
+						header : new sap.m.Label({
+							text : "Site"
+						})
+					}),
+					new sap.m.Column({
+						styleClass : "name",
+						hAlign : "Begin",
+						visible: false,
+						header : new sap.m.Label({
+							text : "plant"
+						})
+					}))
+					
+					
+					//alert(sites.length)
+					for(var i=0;sites.length; i++){
+						x=sites[i].split(":")
+						if(jQuery.inArray(x[0], aAlreadyAddedProducts7) < 0 && jQuery.sap.startsWithIgnoreCase(x[0], sValue)){
+						oSuggestionRow = oTableItemTemplate.clone();
+							oSuggestionRow.getCells()[0].setText(x[0]);
+							oSuggestionRow.getCells()[1].setText(x[1]);
+							
+							oSuggestTableInput7.addSuggestionRow(oSuggestionRow);
+							aAlreadyAddedProducts7.push(x[0]);
+					}
+						
+					}
+				}, 500);
+			}
+		})
+		var oTableItemTemplate = new sap.m.ColumnListItem({
+			type : "Active",
+			vAlign : "Middle",
+			cells : [
+				new sap.m.Label({
+					text : "SITE"
+				}),
+				new sap.m.Label({
+					text: "{qty}",
+					wrapping : true
+				}), new sap.m.Label({
+					text: "{limit}"
+				}), new sap.m.Label({
+					text : "{price}"
+				})
+			]
+		});
 		var formSearchAsset = new sap.m.Dialog("dlgSearchAsset",{
 		    title:"Search Assets",
 		    modal: true,
@@ -321,9 +393,37 @@ function BuildPriorities(selectedId){
 		                           minWidth : 1024,
 		                           maxContainerCols : 2,
 		                           content : [
+		                                      new sap.m.Label({text:"Site"}),
+		                                      oSuggestTableInput7,
+                 
 		                                                       
-		                                                       
-		                                                       new sap.m.Label({text:"Site"}),
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                      
+		                                                      /* new sap.m.Label({text:"Site"}),
 		                                                       new sap.m.Select('AssetSite',{
 		                                                              
 		                                                              items: [
@@ -334,7 +434,7 @@ function BuildPriorities(selectedId){
 		                                                                     
 		                                                                     BuildAssetPlantGroups(oControlEvent.getParameter("selectedItem").getKey());
 		                                                              }
-		                                                       }),
+		                                                       }),*/
 		                                                       new sap.m.Label({text:"Plant Group"}),
 		                                                       new sap.m.Select('AssetGroup',{
 		                                                              
@@ -449,7 +549,7 @@ function BuildPriorities(selectedId){
 		                   sites.push(text+":"+text1);
 		               }
 		   })
-		   LoadSites()
+		   //LoadSites()
 
 
 		}
@@ -637,15 +737,15 @@ function BuildPriorities(selectedId){
 				              }
 		                     if ($(this).attr('ASSET_DESC')==TestType){
 		                    	
-					               if ($.inArray(text, flocs)==-1){
-					                   flocs.push(text);
+					              // if ($.inArray(text, flocs)==-1){
+					               //    flocs.push(text);
 					                   flocdets.push($(this).attr('PLANT_GROUP')+":"+$(this).attr('ASSET_DESC')+":"+$(this).attr('FUNC_LOC')+":"+$(this).attr('FUNC_LOC_DESC')+":"+$(this).attr('EQUIP_DESC')+":"+$(this).attr('MAKE')+":"+$(this).attr('MODEL')+":"+$(this).attr('EQUIP'));
-					               }
+					               //}
 		                     }
 		              }
 		    })
 
-		                                                                           
+		                                                                             flocdets.sort();
 		                                                                                  for (n=0; n < flocdets.length; n++) {
 		                                                                                         x=flocdets[n].split(":")
 		                                                                           

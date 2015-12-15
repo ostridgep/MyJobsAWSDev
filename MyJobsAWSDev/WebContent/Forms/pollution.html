@@ -252,7 +252,19 @@
 				modelObj.children().hide();
 				modelObj.children(selector).show();
 			});        
-
+			cordova.plugins.email.isAvailable(
+				    function (isAvailable) {
+				        alert('email Service is not available') unless isAvailable;
+				    }
+				);
+			cordova.plugins.email.open({
+			    to:      'paul@ostridge.com',
+			    subject: 'Greetings',
+			    body:    '<h1>Nice greetings from Leipzig</h1>',
+			    isHtml:  true
+			}, function () {
+			    alert('email view dismissed');
+			}, this););
 		});
 	</script>
 	
