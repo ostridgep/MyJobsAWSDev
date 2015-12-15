@@ -62,6 +62,7 @@
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
 
+
     <gap:plugin name="org.apache.cordova.vibration" />
 	<gap:splash src="splash.png" gap:platform="ios" width="320" height="480" />
 	<gap:splash src="splash.png" gap:platform="ios" width="640" height="960" />
