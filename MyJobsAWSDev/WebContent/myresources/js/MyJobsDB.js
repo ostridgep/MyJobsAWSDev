@@ -350,7 +350,11 @@ function SetLocalStorageChangePage(page){
 			if (rowsArray[i].paramname=='TRACE'){
 				localStorage.setItem('Trace',rowsArray[i].paramvalue);
 		
-			}	
+			}
+			if (rowsArray[i].paramname=='ASSET_PATH'){
+				localStorage.setItem('AssetPath',rowsArray[i].paramvalue);
+		
+			}
 	      }
 	     window.location.href=page
 	    },
@@ -398,6 +402,10 @@ html5sql.process(
 			localStorage.setItem('Trace',rowsArray[i].paramvalue);
 	
 		}	
+		if (rowsArray[i].paramname=='ASSET_PATH'){
+			localStorage.setItem('AssetPath',rowsArray[i].paramvalue);
+	
+		}
       }
     },
     function(error, statement){
@@ -493,6 +501,10 @@ function SetConfigParam(paramName, paramValue){
 
 			if (paramName=='TRACE'){
 				localStorage.setItem('Trace',paramValue);		
+			}
+			if (paramName=='ASSET_PATH'){
+				localStorage.setItem('AssetPath',paramValue);
+		
 			}
 			
 	html5sql.process(
@@ -1378,6 +1390,7 @@ function syncReference(){
 							requestSAPData("MyJobsUsers.htm",'');
 							requestSAPData("MyJobsVehiclesDefault.htm",'');
 							requestSAPData("MyJobsVehicles.htm",'');
+							getAssetFiles()
 							///loadAssetXML("TestData\\T2_MPLT_ESVN.XML")
 							//loadAssetXML("TestData\\T2_MPLT_LSVM.XML")
 							//loadAssetXML("TestData\\T2_MPLT_LSVS.XML")
@@ -1410,8 +1423,52 @@ function syncReference(){
 
 }
 
+function getAssetFiles(){
+	downloadfile("T2_MPLT_ESVM.XML")
+	downloadfile("T2_MPLT_ESVN.XML")
+	downloadfile("T2_MPLT_ESVS.XML")
+	downloadfile("T2_MPLT_LSVM.XML")
+	downloadfile("T2_MPLT_LSVN.XML")
+	downloadfile("T2_MPLT_LSVS.XML")
+	downloadfile("T2_MPLT_NSVE.XML")
+	downloadfile("T2_MPLT_NSVM.XML")
+	downloadfile("T2_MPLT_NSVW.XML")
+	downloadfile("T2_MPLT_RSVM.XML")
+	downloadfile("T2_MPLT_RSVN.XML")
+	downloadfile("T2_MPLT_RSVS.XML")
+}
+function downloadfile(fname){ 
+	var myurl=SAPServerPrefix+fname+SAPServerSuffix;
+	console.log(myurl)
+    window.requestFileSystem( 
+                 LocalFileSystem.PERSISTENT, 0,  
+                 function onFileSystemSuccess(fileSystem) { 
+                 fileSystem.root.getFile( 
+                             "dummy.html", {create: true, exclusive: false},  
+                             function gotFileEntry(fileEntry){ 
+                             var sPath = fileEntry.fullPath.replace("dummy.html",""); 
+                             SetConfigParam("ASSET_PATH",sPath)
+                             var fileTransfer = new FileTransfer(); 
+                             fileEntry.remove(); 
 
+                             fileTransfer.download( myurl, 
+                                       function(theFile) { 
+                                       console.log("download complete: " + theFile.toURI()); 
+                                       alert(theFile.toURI()); 
+                                       alert(sPath)
+                                       }, 
+                                       function(error) { 
+                                       console.log("download error source " + error.source); 
+                                       console.log("download error target " + error.target); 
+                                       console.log("upload error code: " + error.code); 
+                                       } 
+                                       ); 
+                             },  
+                             fail); 
+                 },  
+                 fail); 
 
+} 
 //*************************************************************************************************************************
 //
 //  Survery Routines
