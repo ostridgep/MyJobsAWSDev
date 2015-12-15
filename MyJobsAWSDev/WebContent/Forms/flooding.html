@@ -314,10 +314,12 @@
                     "Sewer Type: " + sewertype + "\n" +
                     "PS Sortcode: " + psshortcode + "\n" +
                     "Grid Ref: " + gridref + "\n";
-           alert("about to send")
+           //alert("about to send")
             
-                window.location.href = "mailto:paul@ostridge.com?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
-           alert("SENT")
+                window.open("mailto:paul@ostridge.com?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody), target="_top");
+                //window.= "mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
+   		
+           //alert("SENT")
                // window.open("mailto:msadler@anglianwater.co.uk?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody));
                 //window.location.href="formsindex.html"
            
