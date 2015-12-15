@@ -578,6 +578,8 @@ function BuildPriorities(selectedId){
 		alert(navigator.platform)
    	 if(navigator.platform=="Win32"){
    		 AssetPath="Assets/"
+   	 }else{
+   		cordova.file.dataDirectory=cordova.file.dataDirectory
    	 }
  
 			 $.ajax({

@@ -1442,7 +1442,7 @@ function getAssetFiles(){
 }
 function downloadfile(fname){ 
 	var myurl=SAPServerPrefix+fname+SAPServerSuffix;
-	alert(myurl+"---------------"+cordova.file.dataDirectory)
+	//alert(myurl+"---------------"+cordova.file.dataDirectory)
 	opMessage(myurl)
    
 	var fileTransfer = new FileTransfer();
@@ -1454,12 +1454,12 @@ function downloadfile(fname){
 	    uri,
 	    fileURL,
 	    function(entry) {
-	        alert("download complete: " + entry.toURL());
+	    	opMessage("download complete: " + entry.toURL());
 	    },
 	    function(error) {
-	        alert("download error source " + error.source);
-	        alert("download error target " + error.target);
-	        alert("download error code" + error.code);
+	    	opMessage("download error source " + error.source);
+	    	opMessage("download error target " + error.target);
+	    	opMessage("download error code" + error.code);
 	    },
 	    true,
 	    {
@@ -1468,7 +1468,7 @@ function downloadfile(fname){
 	        }
 	    }
 	);	
-alert("Download exit")
+
 } 
 //*************************************************************************************************************************
 //
