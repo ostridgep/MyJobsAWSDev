@@ -1386,11 +1386,11 @@ function syncReference(){
 							SAPServerPrefix=$.trim(rowsArray[0].paramvalue);							
 							opMessage("Sending SAP Request for Ref Data");	
 							getAssetFiles()
-							requestSAPData("MyJobsRefData.htm",'');
-							requestSAPData("MyJobsRefDataCodes.htm",'');
-							requestSAPData("MyJobsUsers.htm",'');
-							requestSAPData("MyJobsVehiclesDefault.htm",'');
-							requestSAPData("MyJobsVehicles.htm",'');
+							//requestSAPData("MyJobsRefData.htm",'');
+							//requestSAPData("MyJobsRefDataCodes.htm",'');
+							//requestSAPData("MyJobsUsers.htm",'');
+							//requestSAPData("MyJobsVehiclesDefault.htm",'');
+							//requestSAPData("MyJobsVehicles.htm",'');
 							
 							///loadAssetXML("TestData\\T2_MPLT_ESVN.XML")
 							//loadAssetXML("TestData\\T2_MPLT_LSVM.XML")
