@@ -575,11 +575,11 @@ function BuildPriorities(selectedId){
 			
 		sap.ui.getCore().getElementById('AssetSearchResults').destroyItems();	
 		x=site.split(":")
-		alert(navigator.platform)
+		
    	 if(navigator.platform=="Win32"){
    		 AssetPath="Assets/"
    	 }else{
-   		cordova.file.dataDirectory=cordova.file.dataDirectory
+   		AssetPath=cordova.file.dataDirectory
    	 }
  
 			 $.ajax({

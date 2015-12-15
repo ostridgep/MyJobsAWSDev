@@ -1392,15 +1392,7 @@ function syncReference(){
 							requestSAPData("MyJobsUsers.htm",'');
 							requestSAPData("MyJobsVehiclesDefault.htm",'');
 							requestSAPData("MyJobsVehicles.htm",'');
-							
-							///loadAssetXML("TestData\\T2_MPLT_ESVN.XML")
-							//loadAssetXML("TestData\\T2_MPLT_LSVM.XML")
-							//loadAssetXML("TestData\\T2_MPLT_LSVS.XML")
-							//loadAssetXML("TestData\\T2_MPLT_NSVE.XML")
-							//loadAssetXML("TestData\\T2_MPLT_NSVM.XML")
-							//loadAssetXML("TestData\\T2_MPLT_NSVW.XML")
-							//loadAssetXML("TestData\\T2_MPLT_RSVM.XML")
-							//loadAssetXML("TestData\\T2_MPLT_RSVN.XML")
+
 							//requestSAPData("MyJobsFunclocs.htm",'');
 							//requestSAPData("MyJobsEquipment.htm",'');
 						 }
