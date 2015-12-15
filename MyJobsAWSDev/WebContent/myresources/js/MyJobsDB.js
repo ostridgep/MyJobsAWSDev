@@ -1425,6 +1425,7 @@ function syncReference(){
 }
 
 function getAssetFiles(){
+	alert("about to download")
 	downloadfile("T2_MPLT_ESVM.XML")
 	downloadfile("T2_MPLT_ESVN.XML")
 	downloadfile("T2_MPLT_ESVS.XML")
@@ -1440,6 +1441,7 @@ function getAssetFiles(){
 }
 function downloadfile(fname){ 
 	var myurl=SAPServerPrefix+fname+SAPServerSuffix;
+	alert(myurl)
 	opMessage(myurl)
     window.requestFileSystem( 
                  LocalFileSystem.PERSISTENT, 0,  
