@@ -1426,7 +1426,7 @@ function syncReference(){
 }
 
 function getAssetFiles(){
-	alert("about to download")
+	
 	downloadfile("T2_MPLT_ESVM.XML")
 	downloadfile("T2_MPLT_ESVN.XML")
 	downloadfile("T2_MPLT_ESVS.XML")
@@ -1442,13 +1442,13 @@ function getAssetFiles(){
 }
 function downloadfile(fname){ 
 	var myurl=SAPServerPrefix+fname+SAPServerSuffix;
-	alert(myurl)
+	alert(myurl+"---------------"+cordova.file.dataDirectory)
 	opMessage(myurl)
    
 	var fileTransfer = new FileTransfer();
 	var uri = encodeURI(myurl);
 	//SetConfigParam("ASSET_PATH","cdvfile://localhost/persistent/")
-	var fileURL ="cdvfile://localhost/persistent/"+fname
+	var fileURL =cordova.file.dataDirectory+fname
 
 	fileTransfer.download(
 	    uri,
@@ -1468,7 +1468,7 @@ function downloadfile(fname){
 	        }
 	    }
 	);	
-
+alert("Download exit")
 } 
 //*************************************************************************************************************************
 //
