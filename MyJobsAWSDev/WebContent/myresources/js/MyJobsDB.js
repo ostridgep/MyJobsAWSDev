@@ -1448,7 +1448,7 @@ function downloadfile(fname){
 	var fileTransfer = new FileTransfer();
 	var uri = encodeURI(myurl);
 	//SetConfigParam("ASSET_PATH","cdvfile://localhost/persistent/")
-	var fileURL =cordova.file.dataDirectory+fname
+	var fileURL = cordova.file.dataDirectory+fname
 
 	fileTransfer.download(
 	    uri,
