@@ -1447,7 +1447,7 @@ function downloadfile(fname){
    
 	var fileTransfer = new FileTransfer();
 	var uri = encodeURI(myurl);
-	SetConfigParam("ASSET_PATH","cdvfile://localhost/persistent/")
+	//SetConfigParam("ASSET_PATH","cdvfile://localhost/persistent/")
 	var fileURL ="cdvfile://localhost/persistent/"+fname
 
 	fileTransfer.download(
@@ -1459,12 +1459,12 @@ function downloadfile(fname){
 	    function(error) {
 	        alert("download error source " + error.source);
 	        alert("download error target " + error.target);
-	        alert("upload error code" + error.code);
+	        alert("download error code" + error.code);
 	    },
-	    false,
+	    true,
 	    {
 	        headers: {
-	            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+	          
 	        }
 	    }
 	);	
