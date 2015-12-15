@@ -1222,11 +1222,8 @@ function BuildMenuBar(){
 }
 function openWebPage(url){
 
-	ref1=window.open(url, "_blank", 'location=yes,closebuttoncaption=Return')
-	ref1.addEventListener('exit', function(event) {
-		//window.location.href="Home.html"; 
-		//alert("Back")
-		});
+	ref1=window.open(url, "_system", 'location=yes,closebuttoncaption=Return')
+	
 	ref1.show();
 }
 
