@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="js/jq.1.10.2.js"></script>
+        <script src="js/jqui.1.9.2.js"></script>
+        <script src="js/bs.3.1.1.js"></script>
+        <script src="js/functions.js"></script>
+        <link rel="stylesheet" href="css/bs.3.1.1.css" />
+        <link rel="stylesheet" href="css/jqui.1.9.2_smoothness.css" />
+        <title>Pollution Feedback</title>
+    </head>
+<body>
+    <div class="container">
+        <div class="well row" style="margin-top: 10px">
+            <div class="col-md-6">
+                <div class="row">
+                    <a href="formsindex.html"><button class="btn btn-lg btn-info">Home</button></a>
+                </div>
+                <div class="row">
+                    <h1><b>Pollution Feedback Form</b></h1>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+				<input class="form-control" id="workorder" placeholder="Enter Work Order"/>
+                    <!--<label class="pull-right" id="workorderlabel"></label>-->
+                </div>
+                <div class="row">
+				<input class="form-control" id="functionallocation" placeholder="Enter Functional Location"/>
+                    <!--<label class="pull-right" id="functionallocationlabel"></label>-->
+                </div>
+            </div>
+
+        </div>
+        <form class="form-inline" method="get" id="pollutionFeedback">
+            <div class="form-group">
+                <div class="well row">
+                    <div class="col-md-6 col-sm-6">                       
+                        <select class="feedback-input" id="pollutionsitetype" name="pollutionsitetype">
+                            <option value="" disabled selected>Pollution Site Type</option>
+                            <option value="AN">Area Name</option>
+                            <option value="AS">Asset Short Code</option>
+                            <option value="HI">Highway</option>
+                            <option value="SN">Site Name</option>
+
+                        </select>                     
+                        <select class="feedback-input" id="dischargetype" name="dischargetype">
+                            <option value="" disabled selected>Discharge Type</option>
+                            <option value="1">STW outfall</option>
+                            <option value="2">CSO</option>
+                            <option value="3">SWO</option>
+                            <option value="4">Overland Flow</option>
+                            <option value="CS">Combined Sewer Overflow</option>
+                            <option value="FS">Foul Sewer</option>
+                            <option value="OW">Other Water Industry Premises</option>
+                            <option value="PS">Pumping Station</option>
+                            <option value="RM">Rising Main</option>
+                            <option value="WT">Water Treatement Works</option>
+                            <option value="WD">Water Distribution System</option>
+                            <option value="SW">Surface Water Outfall</option>
+                            <option value="ST">Storm Tank</option>
+                            <option value="SE">Sewage Treatment Works</option>
+                        </select>
+                        <select class="feedback-input" id="watercoursewidth" name="watercoursewidth">
+                            <option value="" disabled selected>Watercourse Width</option>
+                            <option value="1"><1M</option>
+                            <option value="2">1 to 5M</option>
+                            <option value="3">>5M</option>
+                        </select>
+                        <select class="feedback-input" id="amenitiesimpact" name="amenitiesimpact">
+                            <option value="" disabled selected>Amenities Impact</option>
+                            <option value="MA">Minor Access / Rear of Properties</option>
+                            <option value="PA">Public Access via footpath or highway</option>
+                            <option value="RE">Recreational area / park / watersports</option>
+                            <option value="PO">Potable abstraction point downstream</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <input name="pollutionsite" type="text" class="feedback-input" placeholder="Pollution Site" id="pollutionsite" />
+                        <select class="feedback-input" id="watercoursetype" name="watercoursetype">
+                            <option value="" disabled selected>Watercourse Type</option>
+                            <option value="DD">Dry Ditch</option>
+                            <option value="CA">Canal</option>
+                            <option value="LP">Lake/Pond</option>
+                            <option value="ST">Stream</option>
+                            <option value="FR">Flowing River</option>
+                        </select>
+                        <input name="sizeofimpact" type="text" class="feedback-input" placeholder="Size of Impact (m2)" id="sizeofimpact" />
+                        <select class="feedback-input" id="aestheticimpact" name="aestheticimpact">
+                            <option value="" disabled selected>Aesthetic Impact</option>
+                            <option value="FS">Faint Smell / Odour</option>
+                            <option value="SS">Strong Smell</option>
+                            <option value="GW">Grey Water</option>
+                            <option value="FO">Foam / Scum / Iridescence</option>
+                            <option value="FA">Fats / Oils / Greases</option>
+                            <option value="IN">Industrial Chemicals</option>
+                            <option value="LI">Litter / Rags</option>
+                            <option value="SE">Sewage Fungus</option>
+                            <option value="FA">Faeces / Gross Litter</option>
+                        </select>
+                    </div>
+                    
+
+                </div>
+
+                <div class="well row">
+                    <div class="row col-md-12 col-sm-12">
+                        <div class="btn-group btn-toggle col-md-2 col-sm-3" id="formalsampletaken" style="margin-left: 10px">
+                            <button type="button" class="btn btn-lg btn-default">Yes</button>
+                            <button type="button" class="btn btn-lg btn-primary active">No</button>
+                        </div>
+                        <label type="text" class="feedback-input col-md-9 col-sm-8">Formal Sample Taken?</label>
+                    </div>
+                </div>
+                
+                <div class="well row">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="min-width:114px">Sample Point</th>
+                            <th>Distance from POD (m)</th>
+                            <th>On Site NH3 (mgl)</th>
+                            <th style="min-width:174px">Sample Sent to Lab?</th>
+                        </tr>
+                        <tr>
+                            <th>Upstream</th>
+                            <td><input class="feedback-input-table" id="upstreamdistance"/></td>
+                            <td><input class="feedback-input-table" id="upstreamonsitenh3"/></td>
+                            <td>
+                                <div class="btn-group btn-toggle" id="upstreamsenttolab" style="margin-left: 10px">
+                                    <button type="button" class="btn btn-lg btn-default">Yes</button>
+                                    <button type="button" class="btn btn-lg btn-primary active">No</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Pt of Disc</th>
+                            <td><input class="feedback-input-table" id="ptofdiscdistance"/></td>
+                            <td><input class="feedback-input-table" id="ptofdisconsitenh3"/></td>
+                            <td>
+                                <div class="btn-group btn-toggle" id="ptofdiscsenttolab" style="margin-left: 10px">
+                                    <button type="button" class="btn btn-lg btn-default">Yes</button>
+                                    <button type="button" class="btn btn-lg btn-primary active">No</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Downstream 1</th>
+                            <td><input class="feedback-input-table" id="downstream1distance"/></td>
+                            <td><input class="feedback-input-table" id="downstream1onsitenh3"/></td>
+                            <td>
+                                <div class="btn-group btn-toggle" id="downstream1senttolab" style="margin-left: 10px">
+                                    <button type="button" class="btn btn-lg btn-default">Yes</button>
+                                    <button type="button" class="btn btn-lg btn-primary active">No</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Downstream 2</th>
+                            <td><input class="feedback-input-table" id="downstream2distance"/></td>
+                            <td><input class="feedback-input-table" id="downstream2onsitenh3"/></td>
+                            <td>
+                                <div class="btn-group btn-toggle" id="downstream2senttolab" style="margin-left: 10px">
+                                    <button type="button" class="btn btn-lg btn-default">Yes</button>
+                                    <button type="button" class="btn btn-lg btn-primary active">No</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Downstream 3</th>
+                            <td><input class="feedback-input-table" id="downstream3distance"/></td>
+                            <td><input class="feedback-input-table" id="downstream3onsitenh3"/></td>
+                            <td>
+                                <div class="btn-group btn-toggle" id="downstream3senttolab" style="margin-left: 10px">
+                                    <button type="button" class="btn btn-lg btn-default">Yes</button>
+                                    <button type="button" class="btn btn-lg btn-primary active">No</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="well row">
+                    <div class="submit" id="sendEmail">
+                        <input type="button" value="SEND" id="button-blue" />
+                        <div class="ease"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+    
+	<script src="cordova.js"></script>
+	<script>					
+		$("#sendEmail").on("click", function () {
+			//cordova.plugins.email.open({
+				//to:      'msadler@anglianwater.co.uk',
+				//subject: 'Greetings',
+				//body:    'How are you? Nice greetings from Leipzig'
+			//});
+			
+			    var emailBody = "Please can these flooding details be manaually entered into SAP \n \n " +
+                "Work Order Number: " + workorder + "\n" +
+                "Functional Location: " + functionallocation + "\n \n \n" +
+                "Pollution Site Type: " + pollutionsitetype + "\n" +
+                "Pollution Site: " + pollutionsite + "\n" +
+                "Discharge Type: " + dischargetype + "\n" +
+                "Watercourse Type: " + watercoursetype + "\n" +
+                "Watercourse Width: " + watercoursewidth + "\n" +
+                "Size of Impact: " + sizeofimpact + "\n" +
+                "Amenities Impact: " + amenitiesimpact + "\n" +
+                "aesthetic impact: " + aestheticimpact + "\n" +
+                "formal sample taken: " + formalsampletaken + "\n" +
+                "upstream distance: " + upstreamdistance + "\n" +
+                "upstreamon site nh3: " + upstreamonsitenh3 + "\n" +
+                "upstream sent to lab: " + upstreamsenttolab + "\n" +
+                "pt of disc distance: " + ptofdiscdistance + "\n" +
+                "pt of disc on site nh3: " + ptofdisconsitenh3 + "\n" +
+                "pt of disc sent to lab: " + ptofdiscsenttolab + "\n" +
+                "Downstream1 distance: " + downstream1distance + "\n" +
+                "Downstream1 on site nh3: " + downstream1onsitenh3 + "\n" +
+                "Downstream1 sent to lab: " + downstream1senttolab + "\n" +
+                "Downstream2 distance: " + downstream2distance + "\n" +
+                "Downstream2 on site nh3: " + downstream2onsitenh3 + "\n" +
+                "Downstream2 sent to lab: " + downstream2senttolab + "\n" +
+                "Downstream3 distance: " + downstream3distance + "\n" +
+                "Downstream3 on site nh3: " + downstream3onsitenh3 + "\n" +
+                "Downstream3 Sent to Lab: " + downstream3senttolab + "\n";
+
+
+
+            window.location.href = "mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
+			
+		});
+
+		$(function () {
+
+			$(".btn-group > .btn").click(function () {
+				$(this).addClass("active").siblings().removeClass("active");
+				$(this).addClass("btn-primary").siblings().removeClass("btn-primary").addClass("btn-default");
+			});
+			
+			$('.cause').change(function () {
+				var modelObj = $(".root");
+				var otherValue = $(this).find('option:selected').attr('data-value');
+				var selector = "option[class=" + otherValue.toLowerCase() + "]";
+				modelObj.children().hide();
+				modelObj.children(selector).show();
+			});        
+
+		});
+	</script>
+	
+</body>
+</html>
