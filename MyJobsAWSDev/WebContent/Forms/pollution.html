@@ -252,9 +252,14 @@
 				modelObj.children().hide();
 				modelObj.children(selector).show();
 			});        
+			
+			
+		});
+		document.addEventListener('deviceready', function () {
 			cordova.plugins.email.isAvailable(
 				    function (isAvailable) {
 				        alert('email Service is not available') unless isAvailable;
+				        
 				    }
 				);
 			cordova.plugins.email.open({
@@ -265,7 +270,7 @@
 			}, function () {
 			    alert('email view dismissed');
 			}, this););
-		});
+		}, false);
 	</script>
 	
 </body>
