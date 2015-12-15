@@ -1444,33 +1444,30 @@ function downloadfile(fname){
 	var myurl=SAPServerPrefix+fname+SAPServerSuffix;
 	alert(myurl)
 	opMessage(myurl)
-    window.requestFileSystem( 
-                 LocalFileSystem.PERSISTENT, 0,  
-                 function onFileSystemSuccess(fileSystem) { 
-                 fileSystem.root.getFile( 
-                             "dummy.html", {create: true, exclusive: false},  
-                             function gotFileEntry(fileEntry){ 
-                             var sPath = fileEntry.fullPath.replace("dummy.html",""); 
-                             SetConfigParam("ASSET_PATH",sPath)
-                             var fileTransfer = new FileTransfer(); 
-                             fileEntry.remove(); 
-alert("hello")
-                             fileTransfer.download( myurl, 
-                                       function(theFile) { 
-                            	 opMessage("download complete: " + theFile.toURI()); 
-                                       alert(theFile.toURI()); 
-                                       alert(sPath)
-                                       }, 
-                                       function(error) { 
-                                    	   opMessage("download error source " + error.source); 
-                                    	   opMessage("download error target " + error.target); 
-                                    	   opMessage("upload error code: " + error.code); 
-                                       } 
-                                       ); 
-                             },  
-                             fail); 
-                 },  
-                 fail); 
+   
+	var fileTransfer = new FileTransfer();
+	var uri = encodeURI(myurl);
+	SetConfigParam("ASSET_PATH","cdvfile://localhost/persistent/")
+	var fileURL ="cdvfile://localhost/persistent/"+fname
+
+	fileTransfer.download(
+	    uri,
+	    fileURL,
+	    function(entry) {
+	        alert("download complete: " + entry.toURL());
+	    },
+	    function(error) {
+	        alert("download error source " + error.source);
+	        alert("download error target " + error.target);
+	        alert("upload error code" + error.code);
+	    },
+	    false,
+	    {
+	        headers: {
+	            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+	        }
+	    }
+	);	
 
 } 
 //*************************************************************************************************************************
