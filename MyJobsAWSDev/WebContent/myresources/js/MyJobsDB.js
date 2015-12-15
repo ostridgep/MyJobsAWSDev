@@ -1371,6 +1371,7 @@ function syncReference(){
 	if (!CheckSyncInterval('REFERENCE')){return; }
 	opMessage("Synchronizing Reference Data");
 
+	
 	html5sql.process(
 		["SELECT * from MyUserDets"],
 		function(transaction, results, rowsArray){
