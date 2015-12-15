@@ -1775,8 +1775,10 @@ function saveTheAnswer(order,opno,user,dt,item,task,value,type)
 }
 function createAWSEODNotif(workdate,homedate,empno)
 {
+
 	wdate=convertEODDate(workdate).split(" ")
 	hdate=convertEODDate(homedate).split(" ")
+	
 	html5sql.process("INSERT INTO  MyNotifications (notifno , type, startdate, starttime, enddate, endtime, shorttext) VALUES ("+
 					 "'NEW','Z7','"+wdate[0]+"','"+wdate[1]+"','"+hdate[0]+"','"+hdate[1]+"','Day End Travel/"+getDate()+"/"+empno+"');",
 	 function(transaction, results, rowsArray){
