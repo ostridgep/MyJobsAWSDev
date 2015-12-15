@@ -232,9 +232,9 @@
                 "Downstream3 on site nh3: " + downstream3onsitenh3 + "\n" +
                 "Downstream3 Sent to Lab: " + downstream3senttolab + "\n";
 
-			//window.open("mailto:paul@ostrodge.com?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody),target="_system");
+			window.open("mailto:paul@ostrodge.com?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody),target="_system");
 			
-draftEmail("subject","body")
+
             //window.location.href = "mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
 			 //window.location.href="formsindex.html"
 		});
@@ -256,35 +256,7 @@ draftEmail("subject","body")
 			
 			
 		});
-		function draftEmail(subject, message) {
-		    if (!window.plugin){
-		        //non-mobile - plugins are not present.
-		        alert("Email plugin is not available");  
-		        return;
-		    }
-		    if (!isAvailable){
-		        //mobile, but no email installed
-		        alert("Email is not available")
-		        return;
-		    }
-		    window.plugin.email.open({
-		        to: [], cc: [], bcc: [], attachments: [],
-		        subject: subject,
-		        body: message,
-		        isHtml: true
-		    });
-		}
-		 
-		//runs on application startup, to check for installed email
-		var isAvailable = false;
-		if (window.plugin){
-		    window.plugin.email.isServiceAvailable(
-		        function (emailInstalled) {
-		            isAvailable = emailInstalled;
-		        }
-		    );
-		    alert(email+isAvailable)
-		}	
+		
 	</script>
 	
 </body>
