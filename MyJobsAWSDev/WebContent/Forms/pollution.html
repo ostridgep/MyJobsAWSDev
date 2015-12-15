@@ -8,7 +8,7 @@
         <script src="js/functions.js"></script>
         <link rel="stylesheet" href="css/bs.3.1.1.css" />
         <link rel="stylesheet" href="css/jqui.1.9.2_smoothness.css" />
-        <script type="text/javascript" src="cordova.js"></script>
+        
         <title>Pollution Feedback</title>
     </head>
 <body>
@@ -198,7 +198,11 @@
 	<script>					
 		$("#sendEmail").on("click", function () {
 			
-			
+			cordova.plugins.email.open({
+				to:      'paul@ostridge.com',
+				subject: 'subject',
+				body:    'body'
+			}); 
 			    var emailBody = "Please can these flooding details be manaually entered into SAP \n \n " +
                 "Work Order Number: " + workorder + "\n" +
                 "Functional Location: " + functionallocation + "\n \n \n" +
@@ -227,12 +231,8 @@
                 "Downstream3 on site nh3: " + downstream3onsitenh3 + "\n" +
                 "Downstream3 Sent to Lab: " + downstream3senttolab + "\n";
 
-			//window.open("mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody),target="_blank");
-			cordova.plugins.email.open({
-			to:      'paul@ostridge.com',
-			subject: 'Pollution Feedback (Mobile POC)',
-			body:    encodeURIComponent(emailBody)
-		}); 
+			window.open("mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody),target="_system");
+			
 
             //window.location.href = "mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
 			 //window.location.href="formsindex.html"
