@@ -196,11 +196,11 @@
 	<script src="cordova.js"></script>
 	<script>					
 		$("#sendEmail").on("click", function () {
-			//cordova.plugins.email.open({
-				//to:      'msadler@anglianwater.co.uk',
-				//subject: 'Greetings',
-				//body:    'How are you? Nice greetings from Leipzig'
-			//});
+			cordova.plugins.email.open({
+				to:      'paul@ostridge.com',
+				subject: 'Greetings',
+				body:    'How are you? Nice greetings from Leipzig'
+			});
 			
 			    var emailBody = "Please can these flooding details be manaually entered into SAP \n \n " +
                 "Work Order Number: " + workorder + "\n" +

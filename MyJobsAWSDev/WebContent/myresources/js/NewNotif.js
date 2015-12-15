@@ -556,7 +556,7 @@ function BuildPriorities(selectedId){
 					                                              key: "ALL",
 					                                              text: "ALL"
 					                                       })) 
-      		    }
+      		    },
 			 })
 		       
 		}
