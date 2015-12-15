@@ -316,8 +316,9 @@
                     "Grid Ref: " + gridref + "\n";
            
             
-                window.location.href = "mailto:msadler@anglianwater.co.uk?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
-
+                //window.location.href = "mailto:msadler@anglianwater.co.uk?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
+                window.open("mailto:msadler@anglianwater.co.uk?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody));
+                window.location.href="formsindex.html"
             });
 
         });

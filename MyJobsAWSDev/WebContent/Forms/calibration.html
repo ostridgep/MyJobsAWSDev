@@ -259,13 +259,17 @@
             });
 
             function validateForm(form) {
-                if (form.shortcode.val().length != 6) {
+            	//Paul Changed following If
+                //if (form.shortcode.val().length != 6) {
+                  //  alert('Short Code must be 6 characters long');
+                //};
+                if ($("#shortcode").val().length != 6) {
                     alert('Short Code must be 6 characters long');
                 };
             }
 
             $("#sendEmail").on("click", function () {
-
+            	
                 validateForm($('#calibrationform'));
 
 
@@ -318,6 +322,7 @@
                 var date = getDateTime();
                 var localStorageKeys = Object.keys(localStorage);
                 var id = parseInt(localStorageKeys[localStorageKeys.length - 1]) + 1;
+                
                 if (isNaN(id)){id = 1;}
                 localStorage.setItem(id, '{ "calibrationFormDetails" : [' +
                     '{ "sitename":' + sitename +
@@ -360,9 +365,9 @@
                     "line manager informed: " + linemanagerinformed + "\n" +
                     "date completed: " + datecompleted + "\n" +
                     "completed by: " + completedby + "\n";
-
-                window.location.href = "mailto:msadler@anglianwater.co.uk?subject=Calibration Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
-
+               
+                window.open( "mailto:msadler@anglianwater.co.uk?subject=Calibration Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody))
+                window.location.href = "formsindex.html"
             });
 
         });

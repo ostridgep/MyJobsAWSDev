@@ -196,11 +196,11 @@
 	<script src="cordova.js"></script>
 	<script>					
 		$("#sendEmail").on("click", function () {
-			cordova.plugins.email.open({
+			/* cordova.plugins.email.open({
 				to:      'paul@ostridge.com',
 				subject: 'Greetings',
 				body:    'How are you? Nice greetings from Leipzig'
-			});
+			}); */
 			
 			    var emailBody = "Please can these flooding details be manaually entered into SAP \n \n " +
                 "Work Order Number: " + workorder + "\n" +
@@ -230,10 +230,10 @@
                 "Downstream3 on site nh3: " + downstream3onsitenh3 + "\n" +
                 "Downstream3 Sent to Lab: " + downstream3senttolab + "\n";
 
+			 window.open("mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody));
 
-
-            window.location.href = "mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
-			
+            //window.location.href = "mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
+			 window.location.href="formsindex.html"
 		});
 
 		$(function () {
