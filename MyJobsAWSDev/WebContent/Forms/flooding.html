@@ -38,7 +38,7 @@
 
         <title>Flooding/DG5 Feedback</title>
     </head>
-    <body>
+    <body >
         <div class="container">
             <div class="well row" style="margin-top: 10px">
                 <div class="col-md-6">
@@ -249,8 +249,8 @@
                 $(this).addClass("btn-primary").siblings().removeClass("btn-primary").addClass("btn-default");
             });
 
-            $("#sendEmail").on("click", function () {
-
+            		window.plugins.EmailComposer.showEmailComposer("subject ofmess","body of mess","paul@ostridge.com","pul@ostridge.com","",false,"");
+    			//window.plugins.EmailComposer.showEmailComposer("subject ofmess","body of mess","paul@ostridge.com","pul@ostridge.com","",true,"");
                 var attendancedate = $("#attendancedate").val();
                 var attendanceweather = $("#attendanceweather").val();
                 var flooddate = $("#flooddate").val();
@@ -316,9 +316,9 @@
                     "Grid Ref: " + gridref + "\n";
            
             
-                //window.location.href = "mailto:msadler@anglianwater.co.uk?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
-                window.open("mailto:msadler@anglianwater.co.uk?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody));
-                window.location.href="formsindex.html"
+                window.location.href = "mailto:paul@ostridge.com?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
+               // window.open("mailto:msadler@anglianwater.co.uk?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody));
+                //window.location.href="formsindex.html"
             });
 
         });
