@@ -2207,7 +2207,7 @@ function changeStatus(Status){
 	         updateOperationStatus(CurrentOrderNo, CurrentOpNo, "REJ1" ,"Job Rejected")
 		 }else{
 			 updateOperationStatus(CurrentOrderNo, CurrentOpNo, "REJ2" ,"Job Rejected")
-			 createAWSTConf(CurrentOrderNo, CurrentOpNo,localStorage.getItem("EmployeeID"),CurrentJobWorkCentre,'REJ2',
+			 createAWSTConf(CurrentOrderNo, CurrentOpNo,localStorage.getItem("EmployeeID"),CurrentJobWorkCentre,'SMEPIS',
 				 sap.ui.getCore().byId("StatusRejectVarianceCode").getSelectedItem().getKey(),
 				 statusUpdateDate,statusUpdateTime,statusUpdateDate, statusUpdateTime, 
 				 '','',
@@ -2222,7 +2222,7 @@ function changeStatus(Status){
 		 StatusIcon="decline"
 	 }else if(Status=="REJ2"){
 			 updateOperationStatus(CurrentOrderNo, CurrentOpNo, "REJ2" ,"Job Rejected")
-			 createAWSTConf(CurrentOrderNo, CurrentOpNo,localStorage.getItem("EmployeeID"),CurrentJobWorkCentre,'REJ2',
+			 createAWSTConf(CurrentOrderNo, CurrentOpNo,localStorage.getItem("EmployeeID"),CurrentJobWorkCentre,'SMEPIS',
 					 sap.ui.getCore().byId("StatusRejectVarianceCode").getSelectedItem().getKey(),
 					 statusUpdateDate,statusUpdateTime,statusUpdateDate, statusUpdateTime, 
 					 '','',
