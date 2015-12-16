@@ -29,7 +29,7 @@ var formNewNotif = new sap.m.Dialog("dlgNewNotif",{
 					    	var xcode=sap.ui.getCore().byId("NewCode").getSelectedItem().getKey().split("|")
 					    	var xpriority=sap.ui.getCore().byId("NewPriority").getSelectedItem().getKey().split("|")
 					    	ndate=convertEODDate(sap.ui.getCore().getElementById('NewNotifStart').getValue()).split(" ")
-					    	alert(ndate+"caaaaac"+sap.ui.getCore().getElementById('NewNotifStart').getValue());
+					    	//alert(ndate+"caaaaac"+sap.ui.getCore().getElementById('NewNotifStart').getValue());
 					    	if(sap.ui.getCore().byId("NewDescription").getValue().length>0){
 					    		createNotification(xntype[0],xpriority[0],xgroup[1],xcode[0],sap.ui.getCore().byId("NewGroup").getSelectedItem().getText(),
 										sap.ui.getCore().byId("NewCode").getSelectedItem().getText(),sap.ui.getCore().byId("NewDescription").getValue(),
@@ -146,6 +146,16 @@ var formNewNotif = new sap.m.Dialog("dlgNewNotif",{
             ],
 	contentWidth:"60%",
 	contentHeight: "70%",
+	beforeOpen:function(){
+	      
+		sap.ui.getCore().byId("NewDescription").setValue('');
+		sap.ui.getCore().byId("NewDetails").setValue('');
+		
+		sap.ui.getCore().byId("NewFuncLoc").setValue('');
+		sap.ui.getCore().byId("NewEquipment").setValue('');
+
+
+      }
 	 })
 function BuildNotificationTypes(){
 
