@@ -98,8 +98,11 @@ function convertEODDate(dt)
 	m=t[1].split(" ")
 	if(d[2].length<4){
 		d[2]="20"+d[2]
+		xdate=zeroFill1( d[1])+"."+zeroFill1( d[0])+"."+d[2];
+	}else{
+		xdate=zeroFill1( d[0])+"."+zeroFill1( d[1])+"."+d[2];
 	}
-	xdate=zeroFill1( d[1])+"."+zeroFill1( d[0])+"."+d[2];
+	
 	t[0]=t[0].replace(' ','')
 	if(m[1]=="PM"){
 		hours=(parseInt(t[0])+12).toString()
