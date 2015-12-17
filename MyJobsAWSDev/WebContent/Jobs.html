@@ -279,8 +279,8 @@ new sap.m.Button( {
     	 CloseError='0';
     	 if(((sap.ui.getCore().byId("Close_FunctionalLocation").getValue().length>0)||
     			 (sap.ui.getCore().byId("Close_Equipment").getValue().length>0))&&
-    			 (sap.ui.getCore().byId("Close_InShiftTime").getValue()!="0:0")||
-    			 (sap.ui.getCore().byId("Close_OutOfShiftTime").getValue()!="0:0"))
+    			 (sap.ui.getCore().byId("Close_InShiftTime").getValue()!="00:00")||
+    			 (sap.ui.getCore().byId("Close_OutOfShiftTime").getValue()!="00:00"))
     			 {
     		 		CloseError='0'
     			 }else{
