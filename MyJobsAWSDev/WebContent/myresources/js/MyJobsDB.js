@@ -1623,6 +1623,7 @@ function updateOperationStatus(orderno, opno, code, status)
 		}
 	);
 }
+
 function createNewStatus(orderno, opno, code, status)
 {
 	
