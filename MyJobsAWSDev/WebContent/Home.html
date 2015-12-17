@@ -627,6 +627,7 @@ var formPinCode = new sap.m.Dialog("dlgPinCode",{
 function loadConfigValues(){
 	sap.ui.getCore().getElementById('configServer').setValue(localStorage.getItem('ServerName'))
 	sap.ui.getCore().getElementById('configSAPClient').setValue(localStorage.getItem('SAPClient'))
+	sap.ui.getCore().getElementById('configSAPSystem').setValue(localStorage.getItem('SAPSystem'))
 	sap.ui.getCore().getElementById('configReferenceFrequency').setValue(localStorage.getItem('SyncReferenceFrequency'))
 	sap.ui.getCore().getElementById('configTransactionalFrequency').setValue(localStorage.getItem('SyncTransactionalFrequency'))
 	sap.ui.getCore().getElementById('configUploadFrequency').setValue(localStorage.getItem('SyncUploadFrequency'))
@@ -658,6 +659,7 @@ var formConfig = new sap.m.Dialog("dlgConfig",{
 						SetConfigParam("SYNC_UPLOAD_FREQUENCY",sap.ui.getCore().getElementById('configUploadFrequency').getValue());
 						SetConfigParam("SERVERNAME",sap.ui.getCore().getElementById('configServer').getValue());
 						SetConfigParam("SAPCLIENT",sap.ui.getCore().getElementById('configSAPClient').getValue());
+						SetConfigParam("SAPSYSTEM",sap.ui.getCore().getElementById('configSAPSystem').getValue());
 
 						
 					   
@@ -680,6 +682,8 @@ var formConfig = new sap.m.Dialog("dlgConfig",{
 							
 			                new sap.m.Label({text:"Server"}),
 							new sap.m.Input("configServer",{type: sap.m.InputType.Input}),
+							new sap.m.Label({text:"SAP System (RFC Name)"}),
+							new sap.m.Input("configSAPSystem",{type: sap.m.InputType.Input}),
 			                new sap.m.Label({text:"SAP Client"}),
 							new sap.m.Input("configSAPClient",{type: sap.m.InputType.Input}),
 							new sap.m.Label({text:"Sync Reference Frequency"}),
@@ -1221,7 +1225,9 @@ function BuildMenuBar(){
 	
 }
 function openWebPage(url){
-
+if (url.indexOf("mcweb")>4){
+	url="http://10.144.3.80/"
+}
 	ref1=window.open(url, "_blank", 'location=yes')
 	
 	ref1.show();

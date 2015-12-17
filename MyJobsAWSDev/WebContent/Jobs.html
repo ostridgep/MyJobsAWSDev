@@ -153,7 +153,7 @@ var CurrentJobEQ=""
 var CurrentJobProfile=""
 var currentNotifNo="";
 var currentNotifId="";
-
+var followOnWork=""
 var currentOrderListItem="";
 var tabContents=[]
 var tabFieldCnt=0
@@ -338,6 +338,7 @@ new sap.m.Button( {
     				{
     				followOnVariance=""
     		    	followOnReason=""
+    				
     				}
     			//alert("out="+sap.ui.getCore().byId("Close_OutOfShiftTime").getValue())
     			//alert("in="+sap.ui.getCore().byId("Close_InShiftTime").getValue())
@@ -400,6 +401,7 @@ new sap.m.Button( {
 					updateOperationStatus(CurrentOrderNo, CurrentOpNo, "CONF" ,"Confirmed")
 					currentStatus="CLOSED"
 					prepareChangeStatus()
+					
 					localStorage.setItem('totalAccepted','0');
 					document.getElementById("JobHead_Status").innerHTML = "<Font color='RED'>Closed</font>";
 					

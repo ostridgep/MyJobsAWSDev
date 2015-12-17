@@ -321,6 +321,10 @@ function SetLocalStorageChangePage(page){
 				localStorage.setItem('ServerName',rowsArray[i].paramvalue);
 				
 			}
+			if (rowsArray[i].paramname=='SAPSYSTEM'){
+				localStorage.setItem('SAPSystem',rowsArray[i].paramvalue);
+				
+			}
 			if (rowsArray[i].paramname=='SAPCLIENT'){
 				localStorage.setItem('SAPClient',rowsArray[i].paramvalue);
 				
@@ -477,6 +481,9 @@ function SetConfigParam(paramName, paramValue){
 			}
 			if (paramName=='SAPCLIENT'){
 				localStorage.setItem('SAPClient',paramValue);
+			}
+			if (paramName=='SAPSYSTEM'){
+				localStorage.setItem('SAPSystem',paramValue);
 			}
 			if (paramName=='SYNC_REFERENCE_FREQUENCY'){			
 				localStorage.setItem('SyncReferenceFrequency',paramValue);		
@@ -768,7 +775,7 @@ function syncTransactional(){
 		["SELECT * from MyUserDets"],
 		function(transaction, results, rowsArray){
 			if( rowsArray.length > 0) {
-				SAPServerSuffix="?jsonCallback=?&sap-client="+localStorage.getItem('SAPClient')+"&sap-user="+rowsArray[0].user+"&sap-password="+rowsArray[0].password+"&username="+rowsArray[0].user;
+				SAPServerSuffix="?jsonCallback=?&MYJOBSSYSTEM="+localStorage.getItem('SAPSystem')+"&sap-client="+localStorage.getItem('SAPClient')+"&sap-user="+rowsArray[0].user+"&sap-password="+rowsArray[0].password+"&username="+rowsArray[0].user;
 				
 				html5sql.process("SELECT * from MyWorkConfig where paramname = 'SERVERNAME'",
 					function(transaction, results, rowsArray){
@@ -816,7 +823,7 @@ function syncTransactional1(){
 		["SELECT * from MyUserDets"],
 		function(transaction, results, rowsArray){
 			if( rowsArray.length > 0) {
-				SAPServerSuffix="?jsonCallback=?&sap-client="+localStorage.getItem('SAPClient')+"&sap-user="+rowsArray[0].user+"&sap-password="+rowsArray[0].password+"&username="+rowsArray[0].user;
+				SAPServerSuffix="?jsonCallback=?&MYJOBSSYSTEM="+localStorage.getItem('SAPSystem')+"&sap-client="+localStorage.getItem('SAPClient')+"&sap-user="+rowsArray[0].user+"&sap-password="+rowsArray[0].password+"&username="+rowsArray[0].user;
 				
 				html5sql.process("SELECT * from MyWorkConfig where paramname = 'SERVERNAME'",
 					function(transaction, results, rowsArray){
@@ -874,7 +881,7 @@ var syncDetails = false	;
 		function(transaction, results, rowsArray){
 			if( rowsArray.length > 0) {
 				curremtUser="&username="+rowsArray[0].user;
-				SAPServerSuffix="?jsonCallback=?&sap-client="+localStorage.getItem('SAPClient')+"&sap-user="+rowsArray[0].user+"&sap-password="+rowsArray[0].password;
+				SAPServerSuffix="?jsonCallback=?&MYJOBSSYSTEM="+localStorage.getItem('SAPSystem')+"&sap-client="+localStorage.getItem('SAPClient')+"&sap-user="+rowsArray[0].user+"&sap-password="+rowsArray[0].password;
 // Process Vehicle Defects
 				html5sql.process("SELECT * from MyVehicleCheck where state = 'NEW'",
 					function(transaction, results, rowsArray){
@@ -1376,7 +1383,7 @@ function syncReference(){
 		["SELECT * from MyUserDets"],
 		function(transaction, results, rowsArray){
 			if( rowsArray.length > 0) {
-				SAPServerSuffix="?jsonCallback=?&sap-client="+localStorage.getItem('SAPClient')+"&sap-user="+rowsArray[0].user+"&sap-password="+rowsArray[0].password+"&username="+rowsArray[0].mobileuser;
+				SAPServerSuffix="?jsonCallback=?&MYJOBSSYSTEM="+localStorage.getItem('SAPSystem')+"&sap-client="+localStorage.getItem('SAPClient')+"&sap-user="+rowsArray[0].user+"&sap-password="+rowsArray[0].password+"&username="+rowsArray[0].mobileuser;
 			
 				html5sql.process("SELECT * from MyWorkConfig where paramname = 'SERVERNAME'",
 					function(transaction, results, rowsArray){
@@ -1598,6 +1605,11 @@ function updateOperationStatus(orderno, opno, code, status)
 					if((code=="REJ1")||(code=="REJ2")){
 						updateJobDetsStatus(orderno, opno, code)
 					}
+					if((code=='CONF')&&(followOnWork=="YES"))
+    				{
+    					// this is where we create the Follow on Work Status NWWK or MRWK
+    					createNewStatus(CurrentOrderNo, CurrentOpNo, "NWWK", "New Work")
+    				}
 					 
 				 },
 				 function(error, statement){
@@ -1610,6 +1622,23 @@ function updateOperationStatus(orderno, opno, code, status)
 		
 		}
 	);
+}
+function createNewStatus(orderno, opno, code, status)
+{
+	
+	
+			
+				html5sql.process("insert into mystatus (orderno, opno, state,  stsma, status, actdate, acttime, statusdesc) values("+
+					 "'"+orderno+"','"+opno+"','NEW','ZMAM_1', '"+code+"','"+statusUpdateDate+"','"+statusUpdateTime+"','"+status+"');",				
+				function(){
+					
+					 
+				 },
+				 function(error, statement){
+					opMessage("Error: " + error.message + " when InsertOperationStatus processing " + statement);
+				 }        
+				);
+		
 }
 function updateJobDetsStatus(orderno, opno, status)
 {
@@ -2225,8 +2254,9 @@ function emptyTables(type) {
 							SetConfigParam("LASTSYNC_REFERENCE", "20130316170000");
 							SetConfigParam("LASTSYNC_TRANSACTIONAL", "20130316224900");
 							SetConfigParam("LASTSYNC_UPLOAD", "20130316214900");
-							SetConfigParam("SERVERNAME", "http://awssvstol411.globalinfra.net:8000/sap/bc/bsp/sap/zbsp_myjobs/");
+							SetConfigParam("SERVERNAME", "http://awssvstol411.globalinfra.net:8000/sap/bc/bsp/sap/zbsp_myjobsall/");
 							SetConfigParam("SAPCLIENT", "120");
+							SetConfigParam("SAPSYSTEM", "AW2MYJOBS");
 							
 							busycreateDB.close()
 							formLogin.open()
