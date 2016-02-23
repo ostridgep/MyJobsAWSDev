@@ -160,14 +160,14 @@ var formEndOfDay = new sap.m.Dialog("dlgEndOfDay",{
                                                      new sap.m.DateTimeInput('EndOfDayWorkTime',{
                      									width : "99%",
                      									type : "DateTime",
-                     									
+                     									valueFormat: "yyyy-MM-dd hh:mm:ss",
                      									dateValue : new Date()
                      								}),
                                                      new sap.m.Label({text:"Home Arrival Date/Time"}),
                                                       new sap.m.DateTimeInput('EndOfDayHomeTime',{
                       									width : "99%",
                       									type : "DateTime",
-                      									
+                      									valueFormat: "yyyy-MM-dd hh:mm:ss",
                       									dateValue : new Date()
                       								}),
                                        
