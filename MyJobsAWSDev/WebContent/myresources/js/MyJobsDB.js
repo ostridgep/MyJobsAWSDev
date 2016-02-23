@@ -785,7 +785,7 @@ function syncTransactional(){
 									syncTransactionalDetsUpdated=false;
 									SAPServerPrefix=$.trim(rowsArray[0].paramvalue);
 									requestSAPData("MyJobsOrders.htm",'');
-									requestSAPData("MyJobsOrdersObjects.htm",'');
+									//requestSAPData("MyJobsOrdersObjects.htm",'');
 									requestSAPData("MyJobsNotifications.htm",'');
 									//requestSAPData("MyJobsMessages.htm",'');
 									
@@ -1426,18 +1426,18 @@ function syncReference(){
 
 function getAssetFiles(){
 	
-	downloadfile("T2_MPLT_ESVM.XML")
-	downloadfile("T2_MPLT_ESVN.XML")
-	downloadfile("T2_MPLT_ESVS.XML")
-	downloadfile("T2_MPLT_LSVM.XML")
-	downloadfile("T2_MPLT_LSVN.XML")
-	downloadfile("T2_MPLT_LSVS.XML")
-	downloadfile("T2_MPLT_NSVE.XML")
-	downloadfile("T2_MPLT_NSVM.XML")
-	downloadfile("T2_MPLT_NSVW.XML")
-	downloadfile("T2_MPLT_RSVM.XML")
-	downloadfile("T2_MPLT_RSVN.XML")
-	downloadfile("T2_MPLT_RSVS.XML")
+	//downloadfile("T2_MPLT_ESVM.XML")
+	//downloadfile("T2_MPLT_ESVN.XML")
+	//downloadfile("T2_MPLT_ESVS.XML")
+	//downloadfile("T2_MPLT_LSVM.XML")
+	//downloadfile("T2_MPLT_LSVN.XML")
+	//downloadfile("T2_MPLT_LSVS.XML")
+	//downloadfile("T2_MPLT_NSVE.XML")
+	//downloadfile("T2_MPLT_NSVM.XML")
+	//downloadfile("T2_MPLT_NSVW.XML")
+	//downloadfile("T2_MPLT_RSVM.XML")
+	//downloadfile("T2_MPLT_RSVN.XML")
+	//downloadfile("T2_MPLT_RSVS.XML")
 }
 function downloadfile(fname){ 
 	var myurl=SAPServerPrefix+fname+SAPServerSuffix;
@@ -2605,6 +2605,7 @@ var ordernos=[];
 var changeddatetime=[];
 var orderlist="";
 		opMessage("Doing Orders");
+		
 		console.log(MyOrders.order.length+"Orders")
 		
 		if(MyOrders.order.length>0){

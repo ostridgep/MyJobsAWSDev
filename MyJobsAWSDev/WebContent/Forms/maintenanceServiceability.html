@@ -63,7 +63,8 @@
             <div class="alert alert-danger"><p>All remedial or repair work should be carried out at the time of the Pumping Station Service where possible</p></div>
             <div class="alert alert-danger"><p>The station should be left fully operational, with all equipment installed and left in auto & all panels left secured & locked</p></div>
 
-            <form class="form-inline" method="get" id="pollutionFeedback">
+            <form class="form-inline" method="get" id="maintenanceServiceabilityFeedback" action="ProcessForm.html">
+            <input id="FormName" name="FormName" value="maintenanceServiceabilityFeedback" hidden>
                 <div class="form-group">
                     <div class="well row">
                         <div class="col-md-6 col-sm-6">
@@ -784,7 +785,7 @@
 
                         <div class="well row">
                             <div class="submit" id="sendEmail">
-                                <input type="button" value="SEND" id="button-blue" />
+                                <input type="submit" value="SEND" id="button-blue" />
                                 <div class="ease"></div>
                             </div>
                         </div>

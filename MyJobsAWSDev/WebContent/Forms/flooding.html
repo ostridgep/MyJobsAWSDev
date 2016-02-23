@@ -62,7 +62,9 @@
             </div>
 
             </div>
-            <form class="form-inline" id="pollutionFeedback" method="get">
+            
+            <form class="form-inline" id="pollutionFeedback" method="get" action="ProcessForm.html">
+            <input id="FormName" name="FormName" value="pollutionFeedback" hidden>
                 <div class="form-group">
                     <div class="well row">
                         <div class="col-md-6 col-sm-6">
@@ -209,7 +211,7 @@
 
                     <div class="well row">
                         <div class="submit" id="sendEmail">
-                            <input type="button" value="SEND" id="button-blue" />
+                            <input type="submit" value="SEND" id="button-blue" />
                             <div class="ease"></div>
                         </div>
                     </div>
@@ -222,109 +224,6 @@
     </body>
 
     <script>
-        $(function () {
-            $("#attendancedate").datepicker({
-                dateFormat: "dd/mm/yy"
-            });
-            $('#flooddate').datepicker({
-                dateFormat: "dd/mm/yy"
-            });
-            //$('.hideOnLoad').hide();
-
-            //$('#btnShowFloodOptions').click(function () {
-            //    $('#btnShowFloodOptions').hide();
-            //    $('#flooddate').show();
-            //    $('#floodweather').show();
-            //});
-        
-            $('.cause').change(function () {
-                var modelObj = $(".root");
-                var otherValue = $(this).find('option:selected').attr('data-value');
-                var selector = "option[class=" + otherValue.toLowerCase() + "]";
-                modelObj.children().hide();
-                modelObj.children(selector).show();
-            });
-
-            $(".btn-group > .btn").click(function () {
-                $(this).addClass("active").siblings().removeClass("active");
-                $(this).addClass("btn-primary").siblings().removeClass("btn-primary").addClass("btn-default");
-            });
-
-            
-                var attendancedate = $("#attendancedate").val();
-                var attendanceweather = $("#attendanceweather").val();
-                var flooddate = $("#flooddate").val();
-                var floodweather = $("#floodweather").val();
-
-                var prevflooding = $("#previousflooding").val();
-                var measurableimpact = $('#measurableimpact  > .btn.active').html();
-
-                var floodingsource = $("#floodingsource").val();
-                var causeofflood = $("#causeofflood").val();
-                var rootcause = $("#rootcause").val();
-                var spillsize = $("#spillsize").val();
-                var sewerstatus = $("#sewerstatus").val();
-                var sewertype = $("#sewertype").val();
-
-                var psshortcode = $("#psshortcode").val();
-                var assetref = $("#assetref").val();
-                var gridref = $("#gridref").val();
-
-                var workorder = $('#workorder').val();
-                var functionallocation = $('#functionallocation').val();
-
-                var date = getDateTime();
-                var localStorageKeys = Object.keys(localStorage);
-                var id = parseInt(localStorageKeys[localStorageKeys.length - 1]) + 1;
-                if (isNaN(id)){id = 1;}
-                localStorage.setItem(id, '{ "floodingFormDetails" : [' +
-                    '{ "attendanceDate":' + attendancedate +
-                    ', "attendanceWeather" :' + attendanceweather +
-                    ',  "floodDate" :' + flooddate +
-                    ', "floodWeather" :' + floodweather +
-                    ', "prevflooding" :' + prevflooding +
-                    ', "measurableimpact" :' + measurableimpact +
-                    ', "floodingsource" :' + floodingsource +
-                    ', "causeofflood" :' + causeofflood +
-                    ', "rootcause" :' + rootcause +
-                    ', "spillsize" :' + spillsize +
-                    ', "sewerstatus" :' + sewerstatus +
-                    ', "sewertype" :' + sewertype +
-                    ', "psshortcode" :' + psshortcode +
-                    ', "assetref" :' + assetref +
-                    ', "gridref" :' + gridref +
-                    ', "workorder" :' + workorder +
-                    ', "functionallocation" :' + functionallocation +
-                    ', "submitdatetime" :' + date + '} ] }');
-
-                var emailBody = "Please can these flooding details be manaually entered into SAP \n \n " +
-                    "Work Order Number: " + workorder + "\n" +
-                    "Functional Location: " + functionallocation + "\n \n \n" +
-                    "Attendance Date: " + attendancedate + "\n" +
-                    "Attendance Weather: " + attendanceweather  + "\n" +
-                    "Flood Date: " + flooddate + "\n" +
-                    "Flood Weather: " + floodweather + "\n" +
-                    "Prev Flooding: " + prevflooding + "\n" +
-                    "Measurable Impact: " + measurableimpact + "\n" +
-                    "Flooding Source: " + floodingsource + "\n" +
-                    "Cause of Flood: " + causeofflood + "\n" +
-                    "Root Cause: " + rootcause + "\n" +
-                    "Spill Size: " + spillsize + "\n" +
-                    "Sewer Size: " + sewerstatus + "\n" +
-                    "Sewer Type: " + sewertype + "\n" +
-                    "PS Sortcode: " + psshortcode + "\n" +
-                    "Grid Ref: " + gridref + "\n";
-           //alert("about to send")
-            
-                window.open("mailto:paul@ostridge.com?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody), target="_top");
-                //window.= "mailto:msadler@anglianwater.co.uk?subject=Pollution Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody);
-   		
-           //alert("SENT")
-               // window.open("mailto:msadler@anglianwater.co.uk?subject=DG5/Flooding Feedback (Mobile POC)&body=" + encodeURIComponent(emailBody));
-                //window.location.href="formsindex.html"
-           
-            });
-
-        });
+      
     </script>
 </html>

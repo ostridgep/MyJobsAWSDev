@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="js/jq.1.10.2.js"></script>
+        <script src="js/jqui.1.9.2.js"></script>
+        <script src="js/bs.3.1.1.js"></script>
+        <script src="js/functions.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <link rel="stylesheet" href="css/bs.3.1.1.css" />
+        <link rel="stylesheet" href="css/jqui.1.9.2_smoothness.css" />
+        
+        <title>Form Processed</title>
+    </head>
+<body>
+    <div class="container">
+        <div class="well row" style="margin-top: 10px">
+            <div class="col-md-6">
+                <div class="row">
+                    <a href="formsindex.html"><button class="btn btn-lg btn-info">Home</button></a>
+                </div>
+                <div class="row">
+                    <h1><b> <p valign = "CENTER" id="formdets" ></p></b></h1>
+                </div>
+            </div>
+
+
+        </div>
+        
+    </div>
+    
+<iframe id="mailto" src="" HIDDEN></iframe>
+<script>
+
+params = location.search.substring(1, location.search.length);
+x=params.split("&")
+
+FormName=""
+msgbody=""
+for (n = 0; n< x.length; n++){
+	y=x[n].split("=")
+	if(y[0]=="FormName"){
+		FormName=y[1];
+	}
+	msgbody+=x[n]+"%0D%0A"
+}
+document.getElementById("formdets").innerHTML=FormName + "<BR>Has been Created"
+document.getElementById("mailto").src="mailto:paul@ostrodge.com?subject="+FormName+" (Mobile POC)&body="+msgbody
+document.getElementById("mailto").refresh()
+//location.href="formsindex.html"
+</script>	
+</body>
+</html>
+

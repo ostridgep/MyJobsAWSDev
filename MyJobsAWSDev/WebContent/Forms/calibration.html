@@ -61,7 +61,8 @@
             </div>
             <div class="alert alert-danger"><p>Nothing is so Importanat that YOU cannot take the time to do it safely. Do you have the right tools and PPE to do the job? If in doubt shout</p></div>
 
-            <form class="form-inline" method="get" id="calibrationform">
+            <form class="form-inline" method="get" id="calibrationform" action="ProcessForm.html">
+            <input id="FormName" name="FormName" value="calibrationform" hidden>
                 <div class="form-group">
                     <div class="well row">
                         <div class="col-md-6 col-sm-6">
@@ -202,7 +203,7 @@
 
                     <div class="well row">
                         <div class="submit" id="sendEmail">
-                            <input type="button" value="SEND" id="button-blue" />
+                            <input type="submit" value="SEND" id="button-blue" />
                             <div class="ease"></div>
                         </div>
                     </div>
@@ -268,7 +269,7 @@
                 };
             }
 
-            $("#sendEmail").on("click", function () {
+            $("#sendEmail1").on("click", function () {
             	
                 validateForm($('#calibrationform'));
 
