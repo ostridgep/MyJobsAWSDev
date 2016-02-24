@@ -952,7 +952,7 @@ var syncDetails = false	;
 										n=rowsArray.length
 										html5sql.process("UPDATE MyNotifications SET notifno = 'SENDING' WHERE id='"+item['id']+"'",
 												 function(){
-													sendSAPData("MyJobsCreateEODNotification.htm",newEODDets,"UPDATE MyNotifications SET notifno = 'NEW' WHERE id='"+item['id']+"'");
+													sendSAPData("MyJobsOODNotification.htm",newEODDets,"UPDATE MyNotifications SET notifno = 'NEW' WHERE id='"+item['id']+"'");
 													
 												 },
 												 function(error, statement){
@@ -1806,7 +1806,7 @@ function saveTheAnswer(order,opno,user,dt,item,task,value,type)
 function createAWSEODNotif(workdate,homedate,empno)
 {
 
-	alert(workdate+"===="+homedate)
+	
 
 	wdate=convertEODDate(workdate).split(" ")
 	hdate=convertEODDate(homedate).split(" ")
@@ -1815,11 +1815,11 @@ function createAWSEODNotif(workdate,homedate,empno)
 					 "'NEW','Z7','"+wdate[0]+"','"+wdate[1]+"','"+hdate[0]+"','"+hdate[1]+"','Day End Travel/"+getDate()+"/"+empno+"');",
 	 function(transaction, results, rowsArray){
 
-		alert("Inserted")
+		
 	 },
 	 function(error, statement){
 
-		alert(error)
+		
 	 } )   
 
 }
@@ -2251,7 +2251,7 @@ function emptyTables(type) {
 							SetConfigParam("TRACE", "OFF");
 							SetConfigParam("SYNC_REFERENCE_FREQUENCY", "8400000");
 							SetConfigParam("SYNC_TRANSACTIONAL_FREQUENCY", "600000");
-							SetConfigParam("SYNC_UPLOAD_FREQUENCY", "300");
+							SetConfigParam("SYNC_UPLOAD_FREQUENCY", "2000");
 							SetConfigParam("LASTSYNC_REFERENCE", "20130316170000");
 							SetConfigParam("LASTSYNC_TRANSACTIONAL", "20130316224900");
 							SetConfigParam("LASTSYNC_UPLOAD", "20130316214900");
