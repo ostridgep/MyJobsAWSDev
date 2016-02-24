@@ -133,6 +133,7 @@ var formEndOfDay = new sap.m.Dialog("dlgEndOfDay",{
                                     text: "Save",
                                     type: 	sap.m.ButtonType.Accept,
                                     tap: [ function(oEvt) { 
+                                        alert(sap.ui.getCore().getElementById('EndOfDayWorkTime').getValue()+"===="+sap.ui.getCore().getElementById('EndOfDayHomeTime').getValue())
                                     	createAWSEODNotif(sap.ui.getCore().getElementById('EndOfDayWorkTime').getValue(),
                                     			sap.ui.getCore().getElementById('EndOfDayHomeTime').getValue(),
                                     			localStorage.getItem("EmployeeID"))
