@@ -98,7 +98,7 @@ function convertEODDate(dt)
 	t=x[1].split(":")
 	
 	
-	xdate=d[0]+"."+d[1]+"."+d[2];
+	xdate=d[2]+"."+d[1]+"."+d[0];
 	
 	
 	t[0]=t[0].replace(' ','')

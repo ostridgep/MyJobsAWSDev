@@ -952,7 +952,7 @@ var syncDetails = false	;
 										n=rowsArray.length
 										html5sql.process("UPDATE MyNotifications SET notifno = 'SENDING' WHERE id='"+item['id']+"'",
 												 function(){
-													sendSAPData("MyJobsOODNotification.htm",newEODDets,"UPDATE MyNotifications SET notifno = 'NEW' WHERE id='"+item['id']+"'");
+													sendSAPData("MyJobsCreateEODNotification.htm",newEODDets,"UPDATE MyNotifications SET notifno = 'NEW' WHERE id='"+item['id']+"'");
 													
 												 },
 												 function(error, statement){
