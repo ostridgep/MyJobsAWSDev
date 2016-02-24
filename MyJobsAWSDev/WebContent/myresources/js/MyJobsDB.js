@@ -1815,11 +1815,11 @@ function createAWSEODNotif(workdate,homedate,empno)
 					 "'NEW','Z7','"+wdate[0]+"','"+wdate[1]+"','"+hdate[0]+"','"+hdate[1]+"','Day End Travel/"+getDate()+"/"+empno+"');",
 	 function(transaction, results, rowsArray){
 
-		
+		alert("Inserted")
 	 },
 	 function(error, statement){
 
-		
+		alert(error)
 	 } )   
 
 }
