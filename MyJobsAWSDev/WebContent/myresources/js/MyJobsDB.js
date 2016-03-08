@@ -1586,6 +1586,8 @@ function updateOrderLatLong(orderno, fname, latlong)
 
 function updateOperationStatus(orderno, opno, code, status)
 {
+	
+// Remove the Create NWWK for New Work and overide the CONF with NWWK
 	sqltimestamp=""
 	
 	if(code=='ACPT'){
@@ -1595,10 +1597,14 @@ function updateOperationStatus(orderno, opno, code, status)
 	}else if(code=='PARK'){
 		sqltimestamp=", park_date = '"+statusUpdateDate+"', park_time ='"+statusUpdateTime+"'"
 	}
-
+	
 	html5sql.process("update  myjobdets set status = '"+code+"', status_s = '"+code+"', status_l =  '"+code+"'"+sqltimestamp+" ,tconf_date = '"+statusUpdateDate+"', tconf_time = '"+statusUpdateTime+"' where  orderno = '"+orderno+"' and opno = '"+ opno+"';",
 		function(){
-				
+			if((code=='CONF')&&(followOnWork=="YES"))
+			{
+				code='NWWK'
+				status='New Work'
+			}
 				html5sql.process("insert into mystatus (orderno, opno, state,  stsma, status, actdate, acttime, statusdesc) values("+
 					 "'"+orderno+"','"+opno+"','NEW','ZMAM_1', '"+code+"','"+statusUpdateDate+"','"+statusUpdateTime+"','"+status+"');",				
 				function(){
@@ -1608,7 +1614,7 @@ function updateOperationStatus(orderno, opno, code, status)
 					if((code=='CONF')&&(followOnWork=="YES"))
     				{
     					// this is where we create the Follow on Work Status NWWK or MRWK
-    					createNewStatus(CurrentOrderNo, CurrentOpNo, "NWWK", "New Work")
+    					//createNewStatus(CurrentOrderNo, CurrentOpNo, "NWWK", "New Work")
     				}
 					 
 				 },
@@ -1623,6 +1629,7 @@ function updateOperationStatus(orderno, opno, code, status)
 		}
 	);
 }
+
 
 function createNewStatus(orderno, opno, code, status)
 {
