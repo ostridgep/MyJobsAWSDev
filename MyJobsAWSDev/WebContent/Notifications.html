@@ -20,7 +20,7 @@
 <script src="myresources/js/NotificationFunctions.js"></script>
 <script type="text/javascript">
 html5sql.openDatabase("com.pjo.myjobsbackfill","myjobsbackfill", 5*1024*1024);	
-
+var assetdb = openDatabase('assetdb', '1.0', 'Asset DB', 2 * 1024 * 1024);
 var standardList  = new sap.m.List(
 		  {
 			  //items:standardListItem,

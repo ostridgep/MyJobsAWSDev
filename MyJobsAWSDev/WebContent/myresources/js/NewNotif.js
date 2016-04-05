@@ -1,3 +1,4 @@
+var assetdb = openDatabase('assetdb', '1.0', 'Asset DB', 2 * 1024 * 1024);
 var xmlDoc="";
 var sites=[];
 var plants=[];
@@ -562,6 +563,37 @@ function BuildPriorities(selectedId){
 		   })
 		   //LoadSites()
 
+
+		}
+		function BuildAssetSitesxxx(){
+			
+			sites=[]
+			
+			  assetdb.transaction(function(tx) {
+		            tx.executeSql("select site mtce_plant from myassetdetails group by site order by site", [], updateSiteList);
+		        });	
+	
+	       
+	       $(xmlDoc).find('ASSET_EXTRACT ASSET').each(function(){
+	              
+	              var text= $(this).attr('SITE');
+	              var text1= $(this).attr('MTCE_PLANT');
+	              
+	               if ($.inArray(text+":"+text1, sites)===-1){
+	                   sites.push(text+":"+text1);
+	               }
+	   })
+	   //LoadSites()
+
+
+	}
+		function updateSiteList(transaction, results) {
+
+		    //Iterate through the results
+		    for (i = 0; i < results.rows.length; i++) {
+		        //Get the current row
+		    	 sites.push(results.rows[i].site+":"+results.rows[i].mtce_plant);
+		    }
 
 		}
 		function LoadSites(){

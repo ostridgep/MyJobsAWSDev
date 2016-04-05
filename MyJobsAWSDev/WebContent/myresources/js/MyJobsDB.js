@@ -1426,18 +1426,18 @@ function syncReference(){
 
 function getAssetFiles(){
 	
-	//downloadfile("T2_MPLT_ESVM.XML")
-	//downloadfile("T2_MPLT_ESVN.XML")
-	//downloadfile("T2_MPLT_ESVS.XML")
-	//downloadfile("T2_MPLT_LSVM.XML")
-	//downloadfile("T2_MPLT_LSVN.XML")
-	//downloadfile("T2_MPLT_LSVS.XML")
-	//downloadfile("T2_MPLT_NSVE.XML")
-	//downloadfile("T2_MPLT_NSVM.XML")
-	//downloadfile("T2_MPLT_NSVW.XML")
-	//downloadfile("T2_MPLT_RSVM.XML")
-	//downloadfile("T2_MPLT_RSVN.XML")
-	//downloadfile("T2_MPLT_RSVS.XML")
+	downloadfile("T2_MPLT_ESVM.XML")
+	downloadfile("T2_MPLT_ESVN.XML")
+	downloadfile("T2_MPLT_ESVS.XML")
+	downloadfile("T2_MPLT_LSVM.XML")
+	downloadfile("T2_MPLT_LSVN.XML")
+	downloadfile("T2_MPLT_LSVS.XML")
+	downloadfile("T2_MPLT_NSVE.XML")
+	downloadfile("T2_MPLT_NSVM.XML")
+	downloadfile("T2_MPLT_NSVW.XML")
+	downloadfile("T2_MPLT_RSVM.XML")
+	downloadfile("T2_MPLT_RSVN.XML")
+	downloadfile("T2_MPLT_RSVS.XML")
 }
 function downloadfile(fname){ 
 	var myurl=SAPServerPrefix+fname+SAPServerSuffix;
@@ -1454,6 +1454,7 @@ function downloadfile(fname){
 	    fileURL,
 	    function(entry) {
 	    	opMessage("download complete: " + entry.toURL());
+	    	//console.log("download complete: " + entry.toURL());
 	    },
 	    function(error) {
 	    	opMessage("download error source " + error.source);
@@ -2264,7 +2265,7 @@ function emptyTables(type) {
 							SetConfigParam("LASTSYNC_UPLOAD", "20130316214900");
 							SetConfigParam("SERVERNAME", "http://awssvstol411.globalinfra.net:8000/sap/bc/bsp/sap/zbsp_myjobsall/");
 							SetConfigParam("SAPCLIENT", "120");
-							SetConfigParam("SAPSYSTEM", "AW2MYJOBS");
+							SetConfigParam("SAPSYSTEM", "");
 							
 							busycreateDB.close()
 							formLogin.open()
@@ -2655,12 +2656,20 @@ var orderlist="";
 				orderlist+="'"+MyOrders.order[cntx].orderno+"'"
 				ordernos.push(MyOrders.order[cntx].orderno)
 				changeddatetime.push(MyOrders.order[cntx].changed_date+MyOrders.order[cntx].changed_time)
-				stext=unescape(MyOrders.order[cntx].shorttext).replace(/'/g, "");;
+				
+				
+				stext=MyOrders.order[cntx].shorttext.replace(/%2A%20/g,"%0D%0A")
 				stext=stext.replace("\/", "");;
 				stext=stext.replace(/&/g, "");;
-				ltext=unescape(MyOrders.order[cntx].longtext).replace(/'/g, "");;
-				ltext=stext.replace("\/", "");;
-				ltext=stext.replace(/&/g, "");;
+				//alert(MyOrders.order[cntx].longtext)
+				ltext=MyOrders.order[cntx].longtext.replace(/%2A%20/g,"%0D%0A")
+				ltext=ltext.replace(/%E2%80%A2/g,"%2D")				
+				ltext=ltext.replace(/ %2A /g,"%0D%0A")
+				ltext=ltext.replace(/%C2/g,"")				
+				ltext=ltext.replace(/%3C%28%3E/g,"")	
+				ltext=ltext.replace(/%3C%29%3E/g,"")		
+				ltext=ltext.replace(/%E2%80%99/g,"")
+				//alert(ltext)
 				sqlstatement='INSERT INTO MyOrders (orderno , changedby, changeddatetime, shorttext , longtext , startdate ,  enddate ,contact , telno , type , priority , address ,workaddress, house, houseno, street, district, city, postcode, gis,  property, funcloc, equipment, propertygis, funclocgis, equipmentgis, notifno) VALUES ('+
 					 '"'+MyOrders.order[cntx].orderno+ '","'+ MyOrders.order[cntx].changed_by+ '","'+ MyOrders.order[cntx].changed_date+MyOrders.order[cntx].changed_time+ '","'+ stext + '","'+ ltext + '","'+ MyOrders.order[cntx].startdate + '","'+ MyOrders.order[cntx].enddate + '","'+MyOrders.order[cntx].contact+'",'+ 
 					 '"'+MyOrders.order[cntx].telno + '","'+MyOrders.order[cntx].type + '","'+MyOrders.order[cntx].priority + '","'+MyOrders.order[cntx].address + '","'+MyOrders.order[cntx].workaddress+ '","'+MyOrders.order[cntx].house+'",'+ 
@@ -3014,18 +3023,25 @@ opMessage("Callback Notifications triggured");
 				}else{
 					notiftype=MyNotifications.notification[cntx].sortfield;
 				}*/
-				x=unescape(MyNotifications.notification[cntx].shorttext).replace(/'/g, "");;
-				x=x.replace("\/", "");;
-				x=x.replace(/&/g, "");;
-				y=unescape(MyNotifications.notification[cntx].longtext).replace(/'/g, "");;
-			y=y.replace("\/", "");;
-				y=y.replace(/&/g, "");;
+				x=unescape(MyNotifications.notification[cntx].shorttext).replace(/'/g,"&#039;");;
+				
+				x=x.replace("\/", "");;			
+				y=MyNotifications.notification[cntx].longtext.replace(/%2A%20/g,"%0D%0A")
+				y=y.replace(/%E2%80%A2/g,"%2D")				
+				y=y.replace(/ %2A /g,"%0D%0A")
+				y=y.replace(/%C2/g,"")				
+				y=y.replace(/%3C%28%3E/g,"")	
+				y=y.replace(/%3C%29%3E/g,"")		
+				y=y.replace(/%E2%80%99/g,"")
+	
 				sqlstatement1='INSERT INTO MyNotifications (notifno , changedby, changeddatetime, shorttext , longtext , startdate , priority , type, funcloc, equipment,orderno, reportedon , reportedby , plant, funclocgis, equipmentgis, cattype, pgroup, pcode, grouptext, codetext) VALUES ( '+ 
 					'"'+MyNotifications.notification[cntx].notifno +'",'+
 					'"'+MyNotifications.notification[cntx].changed_by+'",'+ 
 					'"'+MyNotifications.notification[cntx].changed_date +MyNotifications.notification[cntx].changed_time +'",'+ 
-					'"'+MyNotifications.notification[cntx].shorttext+'",'+ 
-					'"'+MyNotifications.notification[cntx].longtext +'",'+ 
+					//'"'+MyNotifications.notification[cntx].shorttext+'",'+ 
+					'"'+x+'",'+ 
+					'"'+y+'",'+ 
+					//'"'+MyNotifications.notification[cntx].longtext +'",'+ 
 					'"'+MyNotifications.notification[cntx].startdate+'",'+ 
 					'"'+MyNotifications.notification[cntx].priority+'",'+
 					'"'+MyNotifications.notification[cntx].type+'",'+
@@ -3159,6 +3175,7 @@ opMessage("Callback Notifications triggured");
 			
 			html5sql.process(sqlstatement,
 							 function(transaction, results, rowsArray){
+				
 								//setCounts()
 								/*var x = window.location.href.split("/")
 								if(x[x.length-1]=="Home.html"){
@@ -3222,7 +3239,7 @@ opMessage("Callback Notifications triggured");
 							
 							 },
 							 function(error, statement){
-								// alert("Error: " + error.message + " when processing " + statement);
+								
 								 opMessage("Error: " + error.message + " when processing " + statement);
 							 }        
 			);	
