@@ -784,7 +784,7 @@ function syncTransactional(){
 									localStorage.setItem('LastSyncTransactionalDetails','');
 									syncTransactionalDetsUpdated=false;
 									SAPServerPrefix=$.trim(rowsArray[0].paramvalue);
-									requestSAPData("MyJobsOrders.htm",'');
+									requestSAPData("MyJobsOrders2.htm",'');
 									//requestSAPData("MyJobsOrdersObjects.htm",'');
 									requestSAPData("MyJobsNotifications.htm",'');
 									//requestSAPData("MyJobsMessages.htm",'');
@@ -1438,6 +1438,7 @@ function getAssetFiles(){
 	downloadfile("T2_MPLT_RSVM.XML")
 	downloadfile("T2_MPLT_RSVN.XML")
 	downloadfile("T2_MPLT_RSVS.XML")
+	
 }
 function downloadfile(fname){ 
 	var myurl=SAPServerPrefix+fname+SAPServerSuffix;
@@ -2987,6 +2988,7 @@ opMessage("Callback objects triggured");
 function notificationCB(MyNotifications){
 var sqlstatement;
 var notiftype=""
+var NotifProcessed=[]
 opMessage("Callback Notifications triggured");
 
 
@@ -3167,7 +3169,10 @@ opMessage("Callback Notifications triggured");
 							(MyNotifications.notification[cntx].notifno.length<4)){
 						sqlstatement1=""
 					}else{
-						sqlstatement+=sqlstatement1;
+						if(NotifProcessed.indexOf(MyNotifications.notification[cntx].notifno)==-1){
+							sqlstatement+=sqlstatement1;
+					        NotifProcessed.push(MyNotifications.notification[cntx].notifno)
+						}
 					}
 						
 
@@ -3176,66 +3181,7 @@ opMessage("Callback Notifications triggured");
 			html5sql.process(sqlstatement,
 							 function(transaction, results, rowsArray){
 				
-								//setCounts()
-								/*var x = window.location.href.split("/")
-								if(x[x.length-1]=="Home.html"){
-									
-								}*/
 								
-/*								html5sql.process("select * from MyNotifications",
-												 function(transaction, results, rowsArray){
-													 for (var n = 0; n < rowsArray.length; n++) {
-														nitem = rowsArray[n];
-														//alert("select  CODEGROUP_TEXT from refcodegroups where catalog_type = '"+nitem.cattype+"' and codegroup = '"+nitem.pgroup+"' ORDER BY CODEGROUP_TEXT ASC LIMIT 1")
-														html5sql.process("select  CODEGROUP_TEXT from refcodegroups where catalog_type = '"+nitem.cattype+"' and codegroup = '"+nitem.pgroup+"' ORDER BY CODEGROUP_TEXT ASC LIMIT 1",
-																		 function(transaction, results, rowsArray1){
-																			 for (var n = 0; n < rowsArray1.length; n++) {
-																				if(rowsArray1.length>0){
-																					//alert("update  MyNotifications set pgrouptext = '"+rowsArray1[0].codegroup_text+"' where notifno = '"+nitem.notifno+"'")
-																					html5sql.process("update  MyNotifications set grouptext = '"+rowsArray1[0].codegroup_text+"' where notifno = '"+nitem.notifno+"'",
-																									 function(transaction, results, rowsArray2){
-																										 
-																									 },
-																									 function(error, statement){
-																										 opMessage("Error: " + error.message + " when processing " + statement);
-																									 }        
-																					);
-																				}
-																			 }
-																		 },
-																		 function(error, statement){
-																			 opMessage("Error: " + error.message + " when processing " + statement);
-																		 }        
-														);	
-														
-
-
-														html5sql.process("select CODE_TEXT from refcodes where code_cat_group = '"+nitem.cattype+nitem.pgroup+"' and code = '"+nitem.pcode+"' ORDER BY CODE_TEXT ASC LIMIT 1",
-																		 function(transaction, results, rowsArray3){
-																			 for (var n = 0; n < rowsArray3.length; n++) {
-																				if(rowsArray3.length>0){
-																					//alert("update  MyNotifications set pcodetext = '"+rowsArray3[0].code_text+"' where notifno = '"+nitem.notifno+"'")
-																					html5sql.process("update  MyNotifications set codetext = '"+rowsArray3[0].code_text+"' where notifno = '"+nitem.notifno+"'",
-																									 function(transaction, results, rowsArray4){
-																										 
-																									 },
-																									 function(error, statement){
-																										 opMessage("Error: " + error.message + " when processing " + statement);
-																									 }        
-																					);
-																				}
-																			 }
-																		 },
-																		 function(error, statement){
-																			 opMessage("Error: " + error.message + " when processing " + statement);
-																		 }        
-														);														
-													 }
-												 },
-												 function(error, statement){
-													 opMessage("Error: " + error.message + " when processing " + statement);
-												 }        
-								);	*/	
 							
 							 },
 							 function(error, statement){
